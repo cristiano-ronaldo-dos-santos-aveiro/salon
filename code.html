@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>L'Atelier de Beauté | Premium Salon Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e2e2e2",
+                        "outline": "#827473",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-tertiary-fixed-variant": "#6b3741",
+                        "on-primary-container": "#755353",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-container": "#dcdddd",
+                        "on-background": "#1a1c1c",
+                        "primary-container": "#f7cac9",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f1f1f1",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-primary-fixed-variant": "#5e3f3e",
+                        "on-primary-fixed": "#2d1415",
+                        "tertiary-fixed-dim": "#fcb3be",
+                        "on-surface-variant": "#504444",
+                        "outline-variant": "#d4c3c2",
+                        "on-surface": "#1a1c1c",
+                        "on-secondary-container": "#5f6161",
+                        "tertiary": "#874e58",
+                        "inverse-surface": "#2f3131",
+                        "secondary": "#5d5f5f",
+                        "surface-variant": "#e2e2e2",
+                        "surface-container-low": "#f3f3f3",
+                        "surface-tint": "#785655",
+                        "tertiary-fixed": "#ffd9de",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#e8bcbb",
+                        "surface-dim": "#dadada",
+                        "tertiary-container": "#ffc6ce",
+                        "surface": "#f9f9f9",
+                        "primary": "#785655",
+                        "surface-bright": "#f9f9f9",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdad9",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#360c17",
+                        "surface-container": "#eeeeee",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#834b55",
+                        "primary-fixed-dim": "#e8bcbb",
+                        "background": "#f9f9f9"
+                    },
+                    fontFamily: {
+                        "notoSerif": ["Noto Serif"],
+                        "plusJakartaSans": ["Plus Jakarta Sans"],
+                        "headline": ["Noto Serif"],
+                        "body": ["Plus Jakarta Sans"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .silk-gradient {
+            background: linear-gradient(135deg, #785655 0%, #f7cac9 100%);
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f9f9f9;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md z-50 docked full-width">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-800 dark:text-zinc-100 hover:opacity-80 transition-opacity cursor-pointer">menu</span>
+</div>
+<h1 class="font-notoSerif italic text-zinc-900 dark:text-zinc-50 text-xl tracking-tight">L'Atelier</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/20 hover:opacity-80 transition-opacity cursor-pointer">
+<img alt="User" class="w-full h-full object-cover" data-alt="close-up portrait of a woman with clean glowing skin and soft natural makeup against a neutral beige background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFWEm2hbrGMXNNwdhZFazKq5_bUHwKSZBznKXakC2qiNWav5CewMrpB0crhlYb5zq6rXVoNs2Edr73ZHrixIqXGVFLMhAt864Zwuu26czJNMHcd5-eNLPlhc-95i2pDq6a7BxBpb4R4QfmK80w1bo5lV5h_sMyegAzK-Anwi8mgQNQ5xh7LT1FZ8vAjzjS841mzd9l1tqDPrzlRc4nfyopnx2V_rsq8otggQyTeRcdjvn9vbJsxbYm57Y-f6E042QX3sv74jEfEJs"/>
+</div>
+</header>
+<main class="relative min-h-screen pb-32">
+<!-- Hero Section -->
+<section class="relative h-[751px] w-full overflow-hidden">
+<div class="absolute inset-0">
+<img alt="Hero" class="w-full h-full object-cover" data-alt="ultra-high-end minimalist luxury beauty salon interior with soft rose quartz accents cream furniture and ethereal natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa9MxDKwJy5zk3jIHDYy7Yyd3uzzFVADwFtLldi0uPSw0xhWQChw0G9dncrMHqSujtjcPuXJSNSu41FkwZIchfUOmw14azrYUQD5i14omqnImed4TqDhDtSjylJLfFbqLvRTMlWgQZF_5urxE4gk7Z3_YCPKcutZUv1WJEFYNYekAb5edARBkflViNfBsf65mitpkhLiZjU2Rt3TAYQtvn3WPVPC3i73nWWXsNbtaQi4jI2y_BmNAzd9M_31EQcevp-z4UT4CMSao"/>
+<div class="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-background"></div>
+</div>
+<div class="relative h-full flex flex-col items-center justify-center px-6 text-center">
+<span class="font-plusJakartaSans uppercase tracking-[0.4em] text-xs mb-4 text-primary font-semibold">Artistry in Every Detail</span>
+<h2 class="font-notoSerif text-5xl md:text-7xl lg:text-8xl text-zinc-900 tracking-tighter leading-tight mb-8">
+                    L'Atelier de <br/><span class="italic">Beauté</span>
+</h2>
+<button class="silk-gradient text-white px-10 py-5 rounded-xl font-plusJakartaSans font-medium text-lg shadow-2xl shadow-primary-container/40 active:scale-90 transition-transform duration-200 backdrop-blur-sm">
+                    Book Now
+                </button>
+</div>
+</section>
+<!-- Signature Experience Grid (Bento Style) -->
+<section class="px-6 -mt-20 relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+<!-- Large Focus Card -->
+<div class="md:col-span-2 glass-card p-8 rounded-lg flex flex-col justify-between min-h-[400px]">
+<div>
+<span class="inline-block px-4 py-1 rounded-full bg-primary-container/30 text-on-primary-container text-xs font-semibold mb-6">NEW SEASON</span>
+<h3 class="font-notoSerif text-3xl text-zinc-900 mb-4">Sculpted Radiance Facial</h3>
+<p class="text-on-surface-variant font-light leading-relaxed max-w-md">Experience our signature rose quartz therapy designed to lift, firm, and illuminate your natural complexion using bespoke botanical elixirs.</p>
+</div>
+<div class="mt-8 flex items-center justify-between">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="young professional woman smiling softly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9XnlhtxcoaXZFB0vaftkjT5I9IxIRCEmVmNxve09Ipa3jmry36RXkt7xIkCuZCV6xKCDIZe3Bj0YbO1OyafWZX7DY5OnGwmbGPCIqdDPsTF4Es5yec0pBdGBKDkU1PXWWp8zBS_7w7wV19HDWI15pqYSIHauNOuyurc8OmslfyMAyYjFIoyHBkvTLGqviAx8DZJEVT2o6wQUwOR1sGB2TdoKMwEAM7B6OE_G5mSEXpVKu2BMO9mjN1ME_Im4Gek-nc-OYYQKNhmw"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="elegant man with modern hairstyle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzCHIh-CPDLclXByVy0jDn5QTqSBSY9e06SSEhQIx0XYEul53Cp7LrMT5jmgBoN2XZNS0aiMFiyiZsk5OJJXQb9WKFSu5LUBSYhmxcRFVXZsPfSExGhlPXA6rU4fc3RJYvk3t3rC7T2fvYe5rgZafGsPlulgXaAFmDdFgAIN37ReAirG_zD5FgussaY_RUW2ZeX4KcmtRjvlDDPBr45qQ-y1lsMFAaEvCJdALpcsCeM2pUzc9t4RVodf_LoNVhm0JYP0i-BCUcfkQ"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="stylish woman with radiant skin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5oupNaWk8QLU0vEVjvB3jGm21OwrdFigqCsdTJgvA4F6pG_Ku6lW1A708jrMhAXSO8FxTgmN6j6zoDFOoVVE3AJuZgnNq0d9excIWalOYXEZTKB2n5ChalhOv6NLwmAUKj9yyZJ_2gMHf0KMWblmKzYfkeqhve6y_hWRb_W3uef18OpIQFI2LsheD96afsyrgmKSTq2V5275yKHTwBv5EhLb99ssnC4Cq3efTrgwNMso88dM3Ig5Ii2eaW06FPMTW6N0LgyjQ2PU"/>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-secondary-container flex items-center justify-center text-[10px] font-bold">+40</div>
+</div>
+<span class="text-primary font-medium flex items-center gap-2 cursor-pointer hover:opacity-70 transition-opacity">Discover more <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+</div>
+</div>
+<!-- Small Aesthetic Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg flex flex-col justify-center text-center">
+<div class="mb-6 w-16 h-16 silk-gradient rounded-full mx-auto flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<h3 class="font-notoSerif text-xl text-zinc-900 mb-2">Sustainable Luxury</h3>
+<p class="text-on-surface-variant text-sm font-light">100% Organic &amp; Cruelty-Free Artisanal Products</p>
+</div>
+<!-- Asymmetric Image Column -->
+<div class="bg-white rounded-lg overflow-hidden h-[300px]">
+<img alt="Service" class="w-full h-full object-cover" data-alt="detailed close-up of professional manicured hands holding a delicate rose-tinted perfume bottle in soft light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5f8XSWEu7Ge-yqY-4tjkuIaqviVQDxPSbkKVbTb0cIH0RQT3noWFraOE__VDpmNlPVLVDu8SZTKq7bKRnvrH5Rwkw4Y2iODWroZJTSDNfg4mZubxQLf_D9kphhQDNWXVY7X2i1ANKZHVdVLzkqyv2EW_YbyuqJKigrhURJVnHTpGZqvKhnu5MX3knYsAAPuSKEJ5IeNWAUoC-qAS1_zLJIhQj_CYM4BYeeyDtxa_mEMiYfXSHBQHtmCvVzXZJnrq41Djk1_2DYt8"/>
+</div>
+<div class="md:col-span-2 glass-card p-8 rounded-lg grid grid-cols-2 gap-8">
+<div class="flex flex-col justify-center">
+<h4 class="font-notoSerif text-2xl text-zinc-900 mb-2">Private Suite</h4>
+<p class="text-on-surface-variant text-sm font-light">Exclusive VIP treatments in our sound-isolated pearl chambers.</p>
+</div>
+<div class="rounded-lg overflow-hidden h-48">
+<img alt="Interior" class="w-full h-full object-cover" data-alt="minimalist white and gold treatment room with a plush cream massage table and soft warm ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqyEJngbI9hv9zwOPL1c82BFQhyUYBZzm0ZPEsBkrGKuNedn-WWjS5q_yj30rE28MZca3ooIb77SOZVNTdf9W8ypvvWr_ouPbjMZp4TIyEBSAzjY85_x_uVsQMN3GVQW1ypSOa6pfJempxPRLa7vbVI9qxN27YiSdeGoszlJeFfriNVqVxiwy_2aWI12Pn2RfdffF7MFLRfWdTUV3VPHrCgBQXhh1AwfSiIsagxgfzWAYnWooMlYutmrrU4gtQp5Qqt06o3A2JD_I"/>
+</div>
+</div>
+</section>
+<!-- Featured Stylists Horizontal Scroll -->
+<section class="py-20">
+<div class="px-6 mb-10 flex justify-between items-end max-w-7xl mx-auto">
+<div>
+<h2 class="font-notoSerif text-4xl text-zinc-900">The Artisans</h2>
+<p class="text-on-surface-variant font-light mt-2">Masters of their craft, curators of your style.</p>
+</div>
+<button class="text-primary font-medium flex items-center gap-2">View all team</button>
+</div>
+<div class="flex overflow-x-auto gap-6 px-6 pb-8 no-scrollbar scroll-smooth">
+<!-- Stylist 1 -->
+<div class="flex-shrink-0 w-72">
+<div class="h-96 rounded-lg overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Stylist" class="w-full h-full object-cover" data-alt="high-fashion portrait of a lead hair stylist with a creative edgy look in a bright studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNLZSUUmFrh7jq00hSlwZnoH7snHDt8XoXO8bL5n6L1yqaOyvzG7neO3YqVOBoTXOg8dCJvkSwmVeJGXH_GbHdd02xRJej7xeNLlLf725iFgEiwYRJn5vKGaAwfk8gLgxyFYqW2F60kvNmn6clbWl4WOoRPWQgbD7EozFP_T-yhVk8lZN4Wlo-J5dC4Ed61EZrzi4icGe9n0gs3Uc0BZYjeIP_AqFD56fkclmwHVM-U7bdbty6YvCLc86Rv6LHX4AnHwE3y4SXogo"/>
+</div>
+<h4 class="font-notoSerif text-lg text-zinc-900">Julian Marc</h4>
+<p class="text-on-surface-variant text-xs uppercase tracking-widest">Master Colorist</p>
+</div>
+<!-- Stylist 2 -->
+<div class="flex-shrink-0 w-72">
+<div class="h-[420px] rounded-lg overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500 -mt-6">
+<img alt="Stylist" class="w-full h-full object-cover" data-alt="professional female aesthetician with glowing skin and a serene expression wearing a white lab coat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFDi4mSSRjuZjEYclFMN6XjgI5e0xse8UEdjNdw6T2_XzBC3hjJKQ6q300JlSr3EFVdhpPE__Yv41mCmQKkgB_m4pJtbxtUh4ys7FTu6PWEt2u9_rMVjIdqYkTlMnhUeRr9mAbJcKtaST6ILMrqFciwoQF50pqUZeVuRKGfNb3tyl4u45TtvLfJoQdHQ5aJ3CugoawG6bTpDDrDYS6LqY_8BY-kzOkY97AU0yPo09mAyQOhX2VIR0zWojgfL8cdaff4YR5DAymvCA"/>
+</div>
+<h4 class="font-notoSerif text-lg text-zinc-900">Elena Rossi</h4>
+<p class="text-on-surface-variant text-xs uppercase tracking-widest">Skincare Director</p>
+</div>
+<!-- Stylist 3 -->
+<div class="flex-shrink-0 w-72">
+<div class="h-96 rounded-lg overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Stylist" class="w-full h-full object-cover" data-alt="sophisticated stylist with a warm smile in a high-end salon environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5IOmPWbLKECmn2YP3aSec52dqe9QuNmrSLj63OuRFk2R2xQ0Yb9cgM0B8GQvs_U2IIZCn0eNN_Ze0F2fZLNVuyRVrwtvXVPyapckn0ZWFVHcvr0QL8j9agm_DKxVoLdi8tsxaq7iUBo5XZRmMzzvW5u0sQlPcZRR7Ee7BFkv0nq93vGWjqYQELqMyPZZ_-ZL4PNcl_qMrcFk9CJv4-aQ7fUl2OwMFVjZavwtbvERpo6ZY4odKfNr8p3HhZzgu0y9nV64pXFYqbDg"/>
+</div>
+<h4 class="font-notoSerif text-lg text-zinc-900">Sophie Chen</h4>
+<p class="text-on-surface-variant text-xs uppercase tracking-widest">Makeup Artist</p>
+</div>
+<!-- Stylist 4 -->
+<div class="flex-shrink-0 w-72">
+<div class="h-[380px] rounded-lg overflow-hidden mb-4 grayscale hover:grayscale-0 transition-all duration-500 mt-4">
+<img alt="Stylist" class="w-full h-full object-cover" data-alt="expert barber with focused expression in a luxury grooming lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvDExNXwlxHHJCrfvUe2VHgBeUMilineg4decs1nxwsAh7ocM5eTMa8xwpuXGv56zpjvVHexcff2pWRf9UnIJX--bR8aRp7Ubtgr9YFjnTmeBtuUJYP2RR15q0D8GaQV30KwOdIGKQ8NGu7wkG2czoIr-5uMCAW7ytIBIGc2xkJwyUfMXoWk5G4aruGDdmfA4-ctoaAfuGIrsQqrw_I4WAorTTXGvuouUPnpQUZvU7etUYEyQwu6uutvUKmGUuRyOHYhMNXrEjTyI"/>
+</div>
+<h4 class="font-notoSerif text-lg text-zinc-900">Marcus Thorne</h4>
+<p class="text-on-surface-variant text-xs uppercase tracking-widest">Master Barber</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl shadow-[0_-4px_20px_rgba(247,202,201,0.15)] rounded-t-[3rem] docked">
+<a class="flex flex-col items-center justify-center bg-rose-100/50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-200 rounded-full px-5 py-2 scale-96 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">health_and_beauty</span>
+<span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-5 py-2 hover:text-rose-300 transition-colors scale-96 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">spa</span>
+<span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-1">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-5 py-2 hover:text-rose-300 transition-colors scale-96 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-1">Stylists</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 px-5 py-2 hover:text-rose-300 transition-colors scale-96 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-1">Book</span>
+</a>
+</nav>
+<!-- Floating Action Button (Only on Mobile for quick booking) -->
+<div class="md:hidden fixed right-6 bottom-32 z-50">
+<button class="w-16 h-16 silk-gradient rounded-full flex items-center justify-center text-white shadow-xl shadow-primary-container/60 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">event</span>
+</button>
+</div>
+</body></html>
