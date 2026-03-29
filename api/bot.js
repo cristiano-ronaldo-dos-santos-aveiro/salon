@@ -40,7 +40,7 @@ module.exports = async function handler(req, res) {
   const text = message.text || '';
   const chatId = message.chat.id;
 
-  if (text === '/start' || text.startsWith('/start ')) {
+  if (text === '/start' || text.startsWith('/start ') || text.startsWith('/start@')) {
     const greeting =
       `✨ Добро пожаловать в L'Atelier!\n\n` +
       `Мы рады видеть вас. Здесь вы можете записаться на процедуры красоты, выбрать мастера и удобное время.`;
