@@ -154,11 +154,21 @@
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden fixed inset-0 z-[90] bg-rose-950/40 backdrop-blur-sm" aria-hidden="true">
-    <div class="absolute top-0 right-0 h-full w-[min(100%,280px)] bg-white/95 backdrop-blur-xl shadow-2xl p-8 pt-24 flex flex-col gap-4 rounded-l-3xl border-l border-rose-100">
-      <button type="button" class="menu-link text-left font-medium text-on-surface py-2 border-b border-rose-200" data-scroll="#hero" data-i18n="nav_home">Главная</button>
-      <button type="button" class="menu-link text-left font-medium text-on-surface py-2 border-b border-rose-200" data-scroll="#services" data-i18n="nav_services">Услуги</button>
-      <button type="button" class="menu-link text-left font-medium text-on-surface py-2 border-b border-rose-200" data-scroll="#artisans" data-i18n="nav_stylists">Мастера</button>
-      <button type="button" class="menu-link text-left font-bold text-primary py-2" data-open-booking data-i18n="nav_book">Записаться</button>
+    <div class="absolute top-0 right-0 h-full w-[min(100%,300px)] bg-white/95 backdrop-blur-xl shadow-2xl flex flex-col min-h-0 rounded-l-3xl border-l border-rose-200">
+      <div class="flex flex-col gap-1 px-8 pt-24 pb-4 flex-1 overflow-y-auto">
+        <button type="button" class="menu-link text-left font-medium text-on-surface py-3 border-b border-rose-200" data-scroll="#hero" data-i18n="nav_home">Главная</button>
+        <button type="button" class="menu-link text-left font-medium text-on-surface py-3 border-b border-rose-200" data-scroll="#services" data-i18n="nav_services">Услуги</button>
+        <button type="button" class="menu-link text-left font-medium text-on-surface py-3 border-b border-rose-200" data-scroll="#artisans" data-i18n="nav_stylists">Мастера</button>
+        <button type="button" class="menu-link text-left font-bold text-primary py-3 border-b border-rose-200" data-open-booking data-i18n="nav_book">Записаться</button>
+      </div>
+      <div class="px-8 pb-8 pt-4 border-t-2 border-rose-200 bg-rose-50/80 shrink-0">
+        <p class="text-xs font-bold uppercase tracking-wider text-on-surface-variant mb-3" data-i18n="menu_language">Язык</p>
+        <div class="flex flex-wrap gap-2" id="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn flex-1 min-w-[4.5rem] text-sm font-bold py-3 rounded-xl border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-white transition-colors" data-lang="ru" aria-pressed="true">RU</button>
+          <button type="button" class="lang-btn flex-1 min-w-[4.5rem] text-sm font-bold py-3 rounded-xl border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-white transition-colors" data-lang="uz" aria-pressed="false">UZ</button>
+          <button type="button" class="lang-btn flex-1 min-w-[4.5rem] text-sm font-bold py-3 rounded-xl border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-white transition-colors" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -169,15 +179,8 @@
       </button>
     </div>
     <h1 class="font-notoSerif italic text-rose-950 text-lg sm:text-xl tracking-tight shrink-0">L'Atelier</h1>
-    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
-      <div class="flex items-center gap-1" id="lang-switch" role="group" aria-label="Language">
-        <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="ru" aria-pressed="true">RU</button>
-        <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="uz" aria-pressed="false">UZ</button>
-        <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="en" aria-pressed="false">EN</button>
-      </div>
-      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-rose-300 shrink-0 shadow-md bg-rose-100" title="Salon">
-        <img alt="" class="w-full h-full object-cover" width="40" height="40" loading="eager" decoding="async" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=160&amp;h=160&amp;fit=crop&amp;q=80&amp;auto=format"/>
-      </div>
+    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-rose-300 shrink-0 shadow-md bg-rose-100" title="Salon">
+      <img alt="" class="w-full h-full object-cover" width="40" height="40" loading="eager" decoding="async" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=160&amp;h=160&amp;fit=crop&amp;q=80&amp;auto=format"/>
     </div>
   </header>
 
@@ -363,6 +366,7 @@
       aria_menu: 'Меню', aria_close: 'Закрыть', aria_quick_book: 'Быстрая запись',
       hero_kicker: 'Красота в деталях', hero_cta: 'Записаться онлайн',
       nav_home: 'Главная', nav_services: 'Услуги', nav_stylists: 'Мастера', nav_book: 'Запись',
+      menu_language: 'Язык',
       bento_badge: 'НОВЫЙ СЕЗОН', bento_title: 'Фейшел «Розовый кварц»',
       bento_text: 'Лифтинг-массаж, пептиды и холодные пластины: кожа выглядит отдохнувшей и сияющей — идеально перед мероприятием или после городского стресса.',
       bento_cta: 'Смотреть услуги', card_lux_title: 'Этичная роскошь',
@@ -389,6 +393,7 @@
       aria_menu: 'Menyu', aria_close: 'Yopish', aria_quick_book: 'Tez yozilish',
       hero_kicker: "Go'zallik har detayda", hero_cta: 'Onlayn yozilish',
       nav_home: 'Bosh sahifa', nav_services: 'Xizmatlar', nav_stylists: 'Ustalar', nav_book: 'Yozilish',
+      menu_language: 'Til',
       bento_badge: 'YANGI MAVSUM', bento_title: '«Rose Quartz» feshial',
       bento_text: 'Lifting-massaj, peptidlar va sovuq plitalar: teri tinch va porloq ko‘rinadi.',
       bento_cta: 'Xizmatlarni ko‘rish', card_lux_title: 'Axloqiy hasham',
@@ -413,6 +418,7 @@
       aria_menu: 'Menu', aria_close: 'Close', aria_quick_book: 'Quick booking',
       hero_kicker: 'Beauty in every detail', hero_cta: 'Book online',
       nav_home: 'Home', nav_services: 'Services', nav_stylists: 'Team', nav_book: 'Book',
+      menu_language: 'Language',
       bento_badge: 'NEW SEASON', bento_title: 'Rose Quartz facial',
       bento_text: 'Lifting massage, peptides and cooling plates — skin looks rested and bright.',
       bento_cta: 'Browse services', card_lux_title: 'Conscious luxury', card_lux_text: 'Professional, cruelty-free products.',
@@ -484,6 +490,8 @@
     renderStylistsRow();
     if (state.step === 3) renderCalendar();
     goStep(state.step);
+    var mm = document.getElementById('mobile-menu');
+    if (mm) mm.classList.add('hidden');
   }
 
   document.querySelectorAll('.lang-btn').forEach(function (b) {
