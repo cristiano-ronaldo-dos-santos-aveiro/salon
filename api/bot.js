@@ -1,72 +1,64 @@
-/**
- * Vercel serverless: Telegram webhook handler.
- * Handles /start command — sends greeting with Mini App button.
- *
- * Setup:
- *   1. Add MINI_APP_URL to Vercel env (your deployment URL, e.g. https://your-app.vercel.app)
- *   2. Register webhook with Telegram once:
- *      curl "https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://your-app.vercel.app/api/bot"
- *
- * Environment variables:
- *   TELEGRAM_BOT_TOKEN (or TELEGRAM_BOT_API) — bot token from @BotFather
- *   MINI_APP_URL — URL of the Mini App to open (your site URL)
- */
+// No need to import fetch if using Node.js 18+ on Vercel
 module.exports = async function handler(req, res) {
+  // 1. Only allow POST
   if (req.method !== 'POST') {
-    return res.status(405).end();
+    return res.status(405).send('Method Not Allowed');
   }
 
-  const token =
-    process.env.TELEGRAM_BOT_TOKEN ||
-    process.env.TELEGRAM_BOT_API;
-
+  const token = process.env.TELEGRAM_BOT_TOKEN || process.env.TELEGRAM_BOT_API;
   const miniAppUrl = process.env.MINI_APP_URL;
 
   if (!token) {
-    return res.status(500).end();
+    console.error("Missing TELEGRAM_BOT_TOKEN");
+    return res.status(500).send('Bot token missing');
   }
 
-  let update = req.body;
-  if (typeof update === 'string') {
-    try { update = JSON.parse(update); } catch { return res.status(400).end(); }
-  }
-
+  // 2. Vercel usually parses JSON automatically. 
+  // If req.body is already an object, use it; otherwise, parse it.
+  const update = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+  
   const message = update?.message;
-  if (!message) {
-    // Not a message update (could be callback_query etc.) — acknowledge and ignore
+  if (!message || !message.text) {
     return res.status(200).json({ ok: true });
   }
 
-  const text = message.text || '';
+  const text = message.text;
   const chatId = message.chat.id;
 
-  if (text === '/start' || text.startsWith('/start ') || text.startsWith('/start@')) {
-    const greeting =
-      `✨ Добро пожаловать в L'Atelier!\n\n` +
-      `Мы рады видеть вас. Здесь вы можете записаться на процедуры красоты, выбрать мастера и удобное время.`;
+  if (text.startsWith('/start')) {
+    const greeting = `✨ Добро пожаловать в L'Atelier!\n\n` +
+                     `Мы рады видеть вас. Здесь вы можете записаться на процедуры красоты, выбрать мастера и удобное время.`;
 
     const payload = {
       chat_id: chatId,
       text: greeting,
-    };
-
-    if (miniAppUrl) {
-      payload.reply_markup = {
+      reply_markup: miniAppUrl ? {
         inline_keyboard: [[
           {
             text: '💅 Открыть L\'Atelier',
             web_app: { url: miniAppUrl },
           },
         ]],
-      };
-    }
+      } : undefined,
+    };
 
-    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    }).catch(() => {});
+    try {
+      // 3. CRITICAL: You MUST await this call
+      const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+      if (!result.ok) {
+        console.error("Telegram API Error:", result);
+      }
+    } catch (error) {
+      console.error("Fetch Error:", error);
+    }
   }
 
+  // 4. Always respond to Telegram with 200 OK immediately
   return res.status(200).json({ ok: true });
 };
