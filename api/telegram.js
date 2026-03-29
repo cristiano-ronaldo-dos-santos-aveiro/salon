@@ -1,7 +1,8 @@
 /**
  * Vercel serverless: forwards booking to Telegram Bot API.
- * Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in Vercel Project → Environment Variables
- * (or .env locally with `vercel dev`).
+ * Environment variables (Vercel → Settings → Environment Variables, or .env for `vercel dev`):
+ *   TELEGRAM_CHAT_ID — обязательно (ваш user id или id группы)
+ *   TELEGRAM_BOT_TOKEN или TELEGRAM_BOT_API — токен от @BotFather (не коммитьте в git!)
  */
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -16,13 +17,18 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  const token =
+    process.env.TELEGRAM_BOT_TOKEN ||
+    process.env.TELEGRAM_BOT_API;
+  const chatId =
+    process.env.TELEGRAM_CHAT_ID ||
+    process.env.TELEGRAM_CHATID;
 
   if (!token || !chatId) {
     return res.status(500).json({
       ok: false,
-      error: 'Server is not configured: set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID',
+      error:
+        'Server is not configured: set TELEGRAM_CHAT_ID and TELEGRAM_BOT_TOKEN (or TELEGRAM_BOT_API)',
     });
   }
 
