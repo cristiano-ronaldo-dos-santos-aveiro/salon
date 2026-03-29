@@ -40,14 +40,15 @@
           keyframes: {
             toastIn: { "0%": { opacity: "0", transform: "translateY(-12px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
             modalIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
-            panelIn: { "0%": { opacity: "0", transform: "translateY(16px) scale(0.98)" }, "100%": { opacity: "1", transform: "translateY(0) scale(1)" } },
-            stepIn: { "0%": { opacity: "0", transform: "translateX(12px)" }, "100%": { opacity: "1", transform: "translateX(0)" } },
+            /* Без transform: на части Android (Samsung WebView) transform + overflow даёт «призрачный» дубликат текста */
+            panelIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+            stepIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
           },
           animation: {
             toastIn: "toastIn 0.35s ease-out forwards",
             modalIn: "modalIn 0.3s ease-out forwards",
-            panelIn: "panelIn 0.4s cubic-bezier(0.22,1,0.36,1) forwards",
-            stepIn: "stepIn 0.4s cubic-bezier(0.22,1,0.36,1) forwards",
+            panelIn: "panelIn 0.35s ease-out forwards",
+            stepIn: "stepIn 0.35s ease-out forwards",
           },
         },
       },
@@ -83,10 +84,43 @@
       box-shadow: 0 0 0 3px rgba(199, 107, 132, 0.55), 0 8px 28px rgba(199, 107, 132, 0.2);
       border-color: #c76b84 !important;
     }
+    @keyframes panelIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes stepIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
     #booking-overlay:not(.hidden) { animation: modalIn 0.3s ease-out forwards; }
-    #booking-panel { animation: panelIn 0.4s cubic-bezier(0.22,1,0.36,1) forwards; }
+    /* Только opacity — избегаем оставшегося transform на предке (ломает слои в Chrome/Android) */
+    #booking-panel { animation: panelIn 0.35s ease-out forwards; transform: none !important; }
     .booking-step-pane { display: none; }
-    .booking-step-pane.is-active { display: block; animation: stepIn 0.4s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .booking-step-pane.is-active {
+      display: block;
+      animation: stepIn 0.35s ease-out forwards;
+      transform: none;
+    }
+    /* Подсказка под полем: не используем display:none — стабильнее для Samsung Chrome */
+    #phone-hint {
+      overflow: hidden;
+      transition: opacity 0.2s ease, max-height 0.25s ease, margin 0.25s ease;
+    }
+    #phone-hint.is-collapsed {
+      max-height: 0;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #phone-hint.is-expanded {
+      max-height: 3rem;
+      margin-top: 0.25rem;
+      margin-bottom: 1rem;
+      opacity: 1;
+      visibility: visible;
+    }
     #mobile-menu:not(.hidden) { animation: modalIn 0.25s ease-out forwards; }
   </style>
 </head>
@@ -232,8 +266,8 @@
           <label class="block text-xs font-medium text-on-surface-variant mb-1">Имя</label>
           <input id="input-name" type="text" autocomplete="name" class="w-full rounded-xl border-rose-200 bg-white focus:border-primary focus:ring-rose-200 mb-3 px-4 py-3" placeholder="Как к вам обращаться"/>
           <label class="block text-xs font-medium text-on-surface-variant mb-1">Телефон (только цифры)</label>
-          <input id="input-phone" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="15" class="w-full rounded-xl border-rose-200 bg-white focus:border-primary focus:ring-rose-200 mb-2 px-4 py-3" placeholder="79991234567"/>
-          <p id="phone-hint" class="text-xs text-rose-600 mb-4 hidden">Введите номер, используя только цифры.</p>
+          <input id="input-phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="15" class="w-full rounded-xl border-rose-200 bg-white focus:border-primary focus:ring-rose-200 px-4 py-3" placeholder="79991234567"/>
+          <p id="phone-hint" class="text-xs text-rose-600 is-collapsed" role="status">Введите номер, используя только цифры.</p>
           <button type="button" id="btn-submit" class="w-full silk-gradient silk-gradient-hover text-white font-semibold py-4 rounded-xl shadow-lg shadow-rose-300/40 active:scale-[0.99] transition-transform">
             Подтвердить запись
           </button>
@@ -501,10 +535,16 @@
     return (raw || '').replace(/\D/g, '');
   }
 
+  function setPhoneHint(show) {
+    var el = $('#phone-hint');
+    el.classList.toggle('is-collapsed', !show);
+    el.classList.toggle('is-expanded', !!show);
+  }
+
   $('#input-phone').addEventListener('input', function () {
     var v = digitsOnlyPhone($('#input-phone').value);
     $('#input-phone').value = v;
-    $('#phone-hint').classList.toggle('hidden', v.length === 0 || v.length >= 10);
+    setPhoneHint(v.length > 0 && v.length < 10);
   });
 
   $('#btn-next').addEventListener('click', function () {
@@ -527,15 +567,14 @@
   $('#btn-submit').addEventListener('click', async function () {
     var name = ($('#input-name').value || '').trim();
     var phone = digitsOnlyPhone($('#input-phone').value);
-    if (phone.length > 0 && phone.length < 10) $('#phone-hint').classList.remove('hidden');
-    else $('#phone-hint').classList.add('hidden');
+    setPhoneHint(phone.length > 0 && phone.length < 10);
 
     if (!state.service || !state.master || !state.date || !state.time) {
       showToast('Заполните все шаги записи.');
       return;
     }
     if (!name) { showToast('Пожалуйста, укажите ваше имя.'); return; }
-    if (phone.length < 10) { showToast('Введите корректный номер телефона (только цифры, не короче 10).'); $('#phone-hint').classList.remove('hidden'); return; }
+    if (phone.length < 10) { showToast('Введите корректный номер телефона (только цифры, не короче 10).'); setPhoneHint(true); return; }
 
     var monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
     var timeStr = state.date.d + ' ' + monthNames[state.date.m] + ' ' + state.date.y + ', ' + state.time;
@@ -572,6 +611,7 @@
           $('#input-name').value = '';
           $('#input-phone').value = '';
           $all('.svc-card, .master-card').forEach(function (el) { el.classList.remove('select-ring-selected'); });
+          setPhoneHint(false);
           goStep(1);
         }, 2000);
       } else {
