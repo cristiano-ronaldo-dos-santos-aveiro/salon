@@ -14,18 +14,18 @@
         extend: {
           colors: {
             "on-primary": "#ffffff",
-            "primary": "#c76b84",
-            "primary-soft": "#e8a4b8",
-            "primary-container": "#fce4ec",
-            "surface": "#fff8fa",
-            "background": "#fff5f8",
-            "on-surface": "#4a3540",
-            "on-surface-variant": "#7d6570",
-            "outline-variant": "#e8c4cf",
-            "tertiary": "#b56576",
-            "surface-container-low": "#ffeef4",
+            "primary": "#9d174d",
+            "primary-soft": "#be185d",
+            "primary-container": "#fce7f3",
+            "surface": "#fff1f5",
+            "background": "#ffe4ec",
+            "on-surface": "#1a0a12",
+            "on-surface-variant": "#5c2d3f",
+            "outline-variant": "#fda4af",
+            "tertiary": "#831843",
+            "surface-container-low": "#ffe4ec",
             "surface-container-lowest": "#ffffff",
-            "secondary-container": "#f3d4dc",
+            "secondary-container": "#fbcfe8",
           },
           fontFamily: {
             notoSerif: ["Noto Serif", "serif"],
@@ -61,28 +61,36 @@
       line-height: 1;
     }
     .glass-card {
-      background: rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(232, 196, 207, 0.35);
+      border: 1px solid rgba(251, 113, 133, 0.45);
     }
     .silk-gradient {
-      background: linear-gradient(135deg, #c76b84 0%, #f8b4c8 50%, #fce4ec 100%);
+      background: linear-gradient(135deg, #9d174d 0%, #db2777 45%, #fbcfe8 100%);
     }
     .silk-gradient-hover:hover {
-      filter: brightness(1.05);
-      box-shadow: 0 12px 40px rgba(199, 107, 132, 0.35);
+      filter: brightness(1.06);
+      box-shadow: 0 12px 40px rgba(157, 23, 77, 0.45);
     }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #fff5f8;
+      background-color: #ffe4ec;
       min-height: max(884px, 100dvh);
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .select-ring-selected {
-      box-shadow: 0 0 0 3px rgba(199, 107, 132, 0.55), 0 8px 28px rgba(199, 107, 132, 0.2);
-      border-color: #c76b84 !important;
+      box-shadow: 0 0 0 3px rgba(157, 23, 77, 0.65), 0 8px 28px rgba(190, 24, 93, 0.35);
+      border-color: #9d174d !important;
+    }
+    .hero-title-shadow {
+      text-shadow: 0 2px 24px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.4);
+    }
+    .lang-btn-active {
+      background: linear-gradient(135deg, #9d174d, #db2777);
+      color: #fff !important;
+      border-color: transparent !important;
     }
     @keyframes panelIn {
       from { opacity: 0; }
@@ -115,7 +123,7 @@
       pointer-events: none;
     }
     #phone-hint.is-expanded {
-      max-height: 3rem;
+      max-height: 5rem;
       margin-top: 0.25rem;
       margin-bottom: 1rem;
       opacity: 1;
@@ -133,36 +141,39 @@
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden fixed inset-0 z-[90] bg-rose-950/40 backdrop-blur-sm" aria-hidden="true">
     <div class="absolute top-0 right-0 h-full w-[min(100%,280px)] bg-white/95 backdrop-blur-xl shadow-2xl p-8 pt-24 flex flex-col gap-4 rounded-l-3xl border-l border-rose-100">
-      <button type="button" class="menu-link text-left font-medium text-on-surface py-2 border-b border-rose-100" data-scroll="#hero">Главная</button>
-      <button type="button" class="menu-link text-left font-medium text-on-surface py-2 border-b border-rose-100" data-scroll="#services">Услуги</button>
-      <button type="button" class="menu-link text-left font-medium text-on-surface py-2 border-b border-rose-100" data-scroll="#artisans">Мастера</button>
-      <button type="button" class="menu-link text-left font-medium text-primary py-2" data-open-booking>Записаться</button>
+      <button type="button" class="menu-link text-left font-medium text-on-surface py-2 border-b border-rose-200" data-scroll="#hero" data-i18n="nav_home">Главная</button>
+      <button type="button" class="menu-link text-left font-medium text-on-surface py-2 border-b border-rose-200" data-scroll="#services" data-i18n="nav_services">Услуги</button>
+      <button type="button" class="menu-link text-left font-medium text-on-surface py-2 border-b border-rose-200" data-scroll="#artisans" data-i18n="nav_stylists">Мастера</button>
+      <button type="button" class="menu-link text-left font-bold text-primary py-2" data-open-booking data-i18n="nav_book">Записаться</button>
     </div>
   </div>
 
-  <header class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-white/65 backdrop-blur-md z-50 border-b border-rose-100/60">
-    <div class="flex items-center gap-4">
-      <button type="button" id="btn-menu" class="material-symbols-outlined text-rose-900 hover:text-primary transition-colors cursor-pointer p-1 rounded-full hover:bg-rose-50" aria-label="Меню">menu</button>
+  <header class="fixed top-0 w-full flex justify-between items-center gap-2 px-3 sm:px-6 py-3 sm:py-4 bg-white/90 backdrop-blur-md z-50 border-b border-rose-300/70">
+    <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+      <button type="button" id="btn-menu" class="material-symbols-outlined text-rose-950 hover:text-primary transition-colors cursor-pointer p-1 rounded-full hover:bg-rose-100" data-i18n-aria="aria_menu">menu</button>
     </div>
-    <h1 class="font-notoSerif italic text-rose-950 text-xl tracking-tight">L'Atelier</h1>
-    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-rose-200 hover:border-primary transition-colors cursor-pointer shadow-sm">
-      <img alt="" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1544005313-94ddf0286ad2?auto=format&fit=crop&w=120&h=120&q=80"/>
+    <h1 class="font-notoSerif italic text-rose-950 text-lg sm:text-xl tracking-tight shrink-0">L'Atelier</h1>
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0" id="lang-switch" role="group" aria-label="Language">
+      <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="ru" aria-pressed="true">RU</button>
+      <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="uz" aria-pressed="false">UZ</button>
+      <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="en" aria-pressed="false">EN</button>
     </div>
   </header>
 
   <main class="relative min-h-screen pb-36">
     <section id="hero" class="relative h-[min(751px,92vh)] w-full overflow-hidden scroll-mt-20">
       <div class="absolute inset-0">
-        <img alt="Интерьер салона" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80"/>
-        <div class="absolute inset-0 bg-gradient-to-b from-rose-100/30 via-transparent to-background"></div>
+        <img alt="" class="w-full h-full object-cover object-center" src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1920&q=85"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-rose-950/90 via-rose-950/50 to-pink-900/35"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-rose-950/60"></div>
       </div>
       <div class="relative h-full flex flex-col items-center justify-center px-6 text-center">
-        <span class="font-plusJakartaSans uppercase tracking-[0.35em] text-xs mb-4 text-primary font-semibold">Красота в деталях</span>
-        <h2 class="font-notoSerif text-4xl sm:text-6xl md:text-7xl text-rose-950 tracking-tighter leading-tight mb-8">
-          L'Atelier de <br/><span class="italic text-primary">Beauté</span>
+        <span class="font-plusJakartaSans uppercase tracking-[0.35em] text-xs mb-4 text-rose-100 font-bold hero-title-shadow" data-i18n="hero_kicker">Красота в деталях</span>
+        <h2 class="font-notoSerif text-4xl sm:text-6xl md:text-7xl text-white tracking-tighter leading-tight mb-8 hero-title-shadow">
+          L'Atelier de <br/><span class="italic text-rose-200">Beauté</span>
         </h2>
-        <button type="button" data-open-booking class="silk-gradient silk-gradient-hover text-white px-10 py-5 rounded-xl font-medium text-lg shadow-xl shadow-rose-300/40 active:scale-[0.97] transition-transform duration-200">
-          Записаться онлайн
+        <button type="button" data-open-booking class="silk-gradient silk-gradient-hover text-white px-10 py-5 rounded-xl font-bold text-lg shadow-xl shadow-rose-900/50 active:scale-[0.97] transition-transform duration-200 border border-white/20">
+          <span data-i18n="hero_cta">Записаться онлайн</span>
         </button>
       </div>
     </section>
@@ -170,9 +181,9 @@
     <section id="services" class="px-6 -mt-20 relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto scroll-mt-24">
       <div class="md:col-span-2 glass-card p-8 rounded-2xl flex flex-col justify-between min-h-[400px]">
         <div>
-          <span class="inline-block px-4 py-1 rounded-full bg-primary-container text-primary text-xs font-semibold mb-6">НОВЫЙ СЕЗОН</span>
-          <h3 class="font-notoSerif text-3xl text-rose-950 mb-4">Фейшел «Розовый кварц»</h3>
-          <p class="text-on-surface-variant font-light leading-relaxed max-w-md">Лифтинг-массаж, пептиды и холодные пластины: кожа выглядит отдохнувшей и сияющей — идеально перед мероприятием или после городского стресса.</p>
+          <span class="inline-block px-4 py-1 rounded-full bg-primary-container text-primary text-xs font-bold mb-6 border border-rose-300/60" data-i18n="bento_badge">НОВЫЙ СЕЗОН</span>
+          <h3 class="font-notoSerif text-3xl text-rose-950 mb-4" data-i18n="bento_title">Фейшел «Розовый кварц»</h3>
+          <p class="text-on-surface-variant font-normal leading-relaxed max-w-md" data-i18n="bento_text">Лифтинг-массаж, пептиды и холодные пластины: кожа выглядит отдохнувшей и сияющей — идеально перед мероприятием или после городского стресса.</p>
         </div>
         <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
           <div class="flex -space-x-3">
@@ -181,8 +192,8 @@
             <img class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" alt="" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80"/>
             <div class="w-10 h-10 rounded-full border-2 border-white bg-primary-container flex items-center justify-center text-[10px] font-bold text-primary">+120</div>
           </div>
-          <button type="button" data-scroll-to="#services-grid" class="text-primary font-medium flex items-center gap-2 hover:text-tertiary transition-colors">
-            Смотреть услуги <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          <button type="button" data-scroll-to="#services-grid" class="text-primary font-bold flex items-center gap-2 hover:text-tertiary transition-colors">
+            <span data-i18n="bento_cta">Смотреть услуги</span> <span class="material-symbols-outlined text-sm">arrow_forward</span>
           </button>
         </div>
       </div>
@@ -190,16 +201,16 @@
         <div class="mb-6 w-16 h-16 silk-gradient rounded-full mx-auto flex items-center justify-center text-white shadow-lg shadow-rose-200/50">
           <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">spa</span>
         </div>
-        <h3 class="font-notoSerif text-xl text-rose-950 mb-2">Этичная роскошь</h3>
-        <p class="text-on-surface-variant text-sm font-light">Профессиональная косметика без тестов на животных и забота об экологии упаковки.</p>
+        <h3 class="font-notoSerif text-xl text-rose-950 mb-2" data-i18n="card_lux_title">Этичная роскошь</h3>
+        <p class="text-on-surface-variant text-sm font-normal" data-i18n="card_lux_text">Профессиональная косметика без тестов на животных и забота об экологии упаковки.</p>
       </div>
       <div class="bg-white rounded-2xl overflow-hidden h-[300px] shadow-md border border-rose-100/60">
         <img alt="Маникюр" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80"/>
       </div>
       <div class="md:col-span-2 glass-card p-8 rounded-2xl grid grid-cols-1 sm:grid-cols-2 gap-8">
         <div class="flex flex-col justify-center">
-          <h4 class="font-notoSerif text-2xl text-rose-950 mb-2">Приватный кабинет</h4>
-          <p class="text-on-surface-variant text-sm font-light">Отдельные зоны для окрашивания и SPA: тишина, аромат и только вы.</p>
+          <h4 class="font-notoSerif text-2xl text-rose-950 mb-2" data-i18n="card_suite_title">Приватный кабинет</h4>
+          <p class="text-on-surface-variant text-sm font-normal" data-i18n="card_suite_text">Отдельные зоны для окрашивания и SPA: тишина, аромат и только вы.</p>
         </div>
         <div class="rounded-xl overflow-hidden h-48 sm:h-auto min-h-[12rem]">
           <img alt="Кабинет" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80"/>
@@ -208,19 +219,19 @@
     </section>
 
     <section id="services-grid" class="px-6 py-16 max-w-7xl mx-auto scroll-mt-24">
-      <h2 class="font-notoSerif text-3xl text-rose-950 mb-2">Популярные услуги</h2>
-      <p class="text-on-surface-variant text-sm mb-8">Выберите услугу в блоке записи или нажмите «Записаться».</p>
+      <h2 class="font-notoSerif text-3xl text-rose-950 mb-2" data-i18n="sec_services_title">Популярные услуги</h2>
+      <p class="text-on-surface-variant text-sm mb-8 font-medium" data-i18n="sec_services_sub">Выберите услугу в блоке записи или нажмите «Записаться».</p>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="services-preview"></div>
     </section>
 
     <section id="artisans" class="py-16 scroll-mt-24">
       <div class="px-6 mb-10 flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 max-w-7xl mx-auto">
         <div>
-          <h2 class="font-notoSerif text-4xl text-rose-950">Наши мастера</h2>
-          <p class="text-on-surface-variant font-light mt-2">Колористы, визажисты и топ-специалисты по уходу.</p>
+          <h2 class="font-notoSerif text-4xl text-rose-950" data-i18n="sec_artisans_title">Наши мастера</h2>
+          <p class="text-on-surface-variant font-medium mt-2" data-i18n="sec_artisans_sub">Колористы, визажисты и топ-специалисты по уходу.</p>
         </div>
-        <button type="button" data-open-booking class="text-primary font-medium flex items-center gap-2 self-start hover:underline decoration-rose-300">
-          Записаться к мастеру <span class="material-symbols-outlined text-sm">calendar_month</span>
+        <button type="button" data-open-booking class="text-primary font-bold flex items-center gap-2 self-start hover:underline decoration-rose-300">
+          <span data-i18n="sec_artisans_cta">Записаться к мастеру</span> <span class="material-symbols-outlined text-sm">calendar_month</span>
         </button>
       </div>
       <div class="flex overflow-x-auto gap-6 px-6 pb-8 no-scrollbar scroll-smooth" id="stylists-row"></div>
@@ -230,22 +241,22 @@
   <!-- Booking overlay -->
   <div id="booking-overlay" class="hidden fixed inset-0 z-[100] bg-rose-950/45 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-6" aria-modal="true" role="dialog">
     <div id="booking-panel" class="bg-gradient-to-b from-white to-rose-50/90 w-full sm:max-w-lg sm:rounded-3xl rounded-t-3xl max-h-[92vh] overflow-hidden shadow-2xl border border-rose-100 flex flex-col">
-      <div class="flex items-center justify-between px-6 py-4 border-b border-rose-100/80 bg-white/80">
-        <h2 class="font-notoSerif text-xl text-rose-950">Онлайн-запись</h2>
-        <button type="button" id="booking-close" class="material-symbols-outlined text-rose-800 hover:text-primary p-2 rounded-full hover:bg-rose-50 transition-colors" aria-label="Закрыть">close</button>
+      <div class="flex items-center justify-between px-6 py-4 border-b border-rose-200 bg-white/95">
+        <h2 class="font-notoSerif text-xl text-rose-950" data-i18n="booking_title">Онлайн-запись</h2>
+        <button type="button" id="booking-close" class="material-symbols-outlined text-rose-950 hover:text-primary p-2 rounded-full hover:bg-rose-100 transition-colors" data-i18n-aria="aria_close">close</button>
       </div>
-      <div class="px-6 py-3 flex gap-2 text-[11px] sm:text-xs font-medium text-on-surface-variant uppercase tracking-wide" id="step-dots"></div>
+      <div class="px-6 py-3 flex flex-wrap gap-x-2 gap-y-1 text-[11px] sm:text-xs font-bold text-on-surface uppercase tracking-wide" id="step-dots"></div>
       <div class="px-6 pb-6 overflow-y-auto flex-1">
         <div id="step-1" class="booking-step-pane is-active" data-step="1">
-          <p class="text-sm text-on-surface-variant mb-4">Шаг 1 — выберите услугу</p>
+          <p class="text-sm text-on-surface-variant mb-4 font-semibold" data-i18n="step1_desc">Шаг 1 — выберите услугу</p>
           <div class="space-y-3" id="booking-services"></div>
         </div>
         <div id="step-2" class="booking-step-pane" data-step="2">
-          <p class="text-sm text-on-surface-variant mb-4">Шаг 2 — выберите мастера</p>
+          <p class="text-sm text-on-surface-variant mb-4 font-semibold" data-i18n="step2_desc">Шаг 2 — выберите мастера</p>
           <div class="space-y-3" id="booking-masters"></div>
         </div>
         <div id="step-3" class="booking-step-pane" data-step="3">
-          <p class="text-sm text-on-surface-variant mb-4">Шаг 3 — дата и время</p>
+          <p class="text-sm text-on-surface-variant mb-4 font-semibold" data-i18n="step3_desc">Шаг 3 — дата и время</p>
           <div class="flex items-center justify-between mb-3">
             <button type="button" id="cal-prev" class="p-2 rounded-full hover:bg-rose-100 text-rose-800 material-symbols-outlined text-xl">chevron_left</button>
             <span id="cal-label" class="font-notoSerif text-lg text-rose-950"></span>
@@ -253,75 +264,258 @@
           </div>
           <div class="grid grid-cols-7 gap-1 text-center text-xs font-medium text-on-surface-variant mb-2" id="cal-weekdays"></div>
           <div class="grid grid-cols-7 gap-1 mb-6" id="cal-grid"></div>
-          <p class="text-xs text-on-surface-variant mb-2">Свободные слоты</p>
+          <p class="text-xs text-on-surface-variant mb-2 font-semibold" data-i18n="slots_title">Свободные слоты</p>
           <div class="flex flex-wrap gap-2" id="time-slots"></div>
         </div>
         <div id="step-4" class="booking-step-pane" data-step="4">
-          <p class="text-sm text-on-surface-variant mb-4">Шаг 4 — контакты</p>
-          <div class="rounded-2xl bg-white/90 border border-rose-100 p-4 mb-4 text-sm space-y-1">
-            <p><span class="text-on-surface-variant">Услуга:</span> <span id="sum-service" class="font-medium text-rose-950"></span></p>
-            <p><span class="text-on-surface-variant">Мастер:</span> <span id="sum-master" class="font-medium text-rose-950"></span></p>
-            <p><span class="text-on-surface-variant">Время:</span> <span id="sum-datetime" class="font-medium text-rose-950"></span></p>
+          <p class="text-sm text-on-surface-variant mb-4 font-semibold" data-i18n="step4_desc">Шаг 4 — контакты</p>
+          <div class="rounded-2xl bg-white/95 border-2 border-rose-200 p-4 mb-4 text-sm space-y-1">
+            <p><span class="text-on-surface-variant font-semibold" data-i18n="sum_service">Услуга:</span> <span id="sum-service" class="font-bold text-rose-950"></span></p>
+            <p><span class="text-on-surface-variant font-semibold" data-i18n="sum_master">Мастер:</span> <span id="sum-master" class="font-bold text-rose-950"></span></p>
+            <p><span class="text-on-surface-variant font-semibold" data-i18n="sum_time">Время:</span> <span id="sum-datetime" class="font-bold text-rose-950"></span></p>
           </div>
-          <label class="block text-xs font-medium text-on-surface-variant mb-1">Имя</label>
-          <input id="input-name" type="text" autocomplete="name" class="w-full rounded-xl border-rose-200 bg-white focus:border-primary focus:ring-rose-200 mb-3 px-4 py-3" placeholder="Как к вам обращаться"/>
-          <label class="block text-xs font-medium text-on-surface-variant mb-1">Телефон (только цифры)</label>
-          <input id="input-phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="15" class="w-full rounded-xl border-rose-200 bg-white focus:border-primary focus:ring-rose-200 px-4 py-3" placeholder="79991234567"/>
-          <p id="phone-hint" class="text-xs text-rose-600 is-collapsed" role="status">Введите номер, используя только цифры.</p>
-          <button type="button" id="btn-submit" class="w-full silk-gradient silk-gradient-hover text-white font-semibold py-4 rounded-xl shadow-lg shadow-rose-300/40 active:scale-[0.99] transition-transform">
-            Подтвердить запись
+          <label class="block text-xs font-bold text-on-surface mb-1" data-i18n="label_name">Имя</label>
+          <input id="input-name" type="text" autocomplete="name" data-i18n-placeholder="ph_name" class="w-full rounded-xl border-2 border-rose-200 bg-white focus:border-primary focus:ring-rose-200 mb-3 px-4 py-3" placeholder="Как к вам обращаться"/>
+          <label class="block text-xs font-bold text-on-surface mb-1" data-i18n="label_phone">Телефон (только цифры)</label>
+          <input id="input-phone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="12" data-i18n-placeholder="ph_phone" class="w-full rounded-xl border-2 border-rose-200 bg-white focus:border-primary focus:ring-rose-200 px-4 py-3" placeholder="998901234567"/>
+          <p id="phone-hint" class="text-xs text-rose-800 font-semibold is-collapsed" role="status" data-i18n="phone_hint">Введите номер, используя только цифры.</p>
+          <button type="button" id="btn-submit" class="w-full silk-gradient silk-gradient-hover text-white font-bold py-4 rounded-xl shadow-lg shadow-rose-900/30 active:scale-[0.99] transition-transform">
+            <span data-i18n="btn_confirm">Подтвердить запись</span>
           </button>
           <p id="submit-status" class="text-center text-sm mt-3 min-h-[1.25rem]"></p>
         </div>
       </div>
-      <div class="px-6 py-4 border-t border-rose-100 bg-white/90 flex justify-between gap-3">
-        <button type="button" id="btn-back" class="px-5 py-3 rounded-xl border border-rose-200 text-rose-900 font-medium hover:bg-rose-50 transition-colors hidden">Назад</button>
-        <button type="button" id="btn-next" class="ml-auto px-6 py-3 rounded-xl bg-primary text-white font-medium hover:bg-tertiary transition-colors shadow-md shadow-rose-200/50">Далее</button>
+      <div class="px-6 py-4 border-t border-rose-200 bg-white/95 flex justify-between gap-3">
+        <button type="button" id="btn-back" class="px-5 py-3 rounded-xl border-2 border-rose-300 text-rose-950 font-bold hover:bg-rose-50 transition-colors hidden" data-i18n="btn_back">Назад</button>
+        <button type="button" id="btn-next" class="ml-auto px-6 py-3 rounded-xl bg-primary text-white font-bold hover:bg-tertiary transition-colors shadow-lg shadow-rose-300/50" data-i18n="btn_next">Далее</button>
       </div>
     </div>
   </div>
 
-  <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 sm:px-4 pb-6 pt-3 bg-white/75 backdrop-blur-xl shadow-[0_-4px_24px_rgba(199,107,132,0.12)] rounded-t-[2.5rem] border-t border-rose-100/80">
-    <button type="button" data-nav="home" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-400 hover:text-primary transition-colors">
+  <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 sm:px-4 pb-6 pt-3 bg-white/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(157,23,77,0.18)] rounded-t-[2.5rem] border-t-2 border-rose-200">
+    <button type="button" data-nav="home" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-600 hover:text-primary transition-colors">
       <span class="material-symbols-outlined text-2xl" data-fill="1">health_and_beauty</span>
-      <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5">Главная</span>
+      <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5 font-bold" data-i18n="nav_home">Главная</span>
     </button>
-    <button type="button" data-nav="services" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-400 hover:text-primary transition-colors">
+    <button type="button" data-nav="services" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-600 hover:text-primary transition-colors">
       <span class="material-symbols-outlined text-2xl">spa</span>
-      <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5">Услуги</span>
+      <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5 font-bold" data-i18n="nav_services">Услуги</span>
     </button>
-    <button type="button" data-nav="stylists" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-400 hover:text-primary transition-colors">
+    <button type="button" data-nav="stylists" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-600 hover:text-primary transition-colors">
       <span class="material-symbols-outlined text-2xl">content_cut</span>
-      <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5">Мастера</span>
+      <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5 font-bold" data-i18n="nav_stylists">Мастера</span>
     </button>
-    <button type="button" data-nav="book" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-400 hover:text-primary transition-colors">
+    <button type="button" data-nav="book" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-600 hover:text-primary transition-colors">
       <span class="material-symbols-outlined text-2xl">calendar_month</span>
-      <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5">Запись</span>
+      <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5 font-bold" data-i18n="nav_book">Запись</span>
     </button>
   </nav>
 
   <div class="md:hidden fixed right-5 bottom-28 z-40">
-    <button type="button" data-open-booking class="w-14 h-14 silk-gradient rounded-full flex items-center justify-center text-white shadow-xl shadow-rose-300/60 active:scale-95 transition-transform" aria-label="Быстрая запись">
+    <button type="button" data-open-booking class="w-14 h-14 silk-gradient rounded-full flex items-center justify-center text-white shadow-xl shadow-rose-600/50 active:scale-95 transition-transform" data-i18n-aria="aria_quick_book">
       <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">event</span>
     </button>
   </div>
 
   <script>
 (function () {
+  var LANG_STORAGE = 'salon-lang';
+  var LANG = (function () {
+    try {
+      var s = localStorage.getItem(LANG_STORAGE);
+      if (s === 'uz' || s === 'en' || s === 'ru') return s;
+    } catch (e) {}
+    return 'ru';
+  })();
+
+  var I18N = {
+    ru: {
+      page_title: "L'Atelier de Beauté | Запись в салон",
+      aria_menu: 'Меню', aria_close: 'Закрыть', aria_quick_book: 'Быстрая запись',
+      hero_kicker: 'Красота в деталях', hero_cta: 'Записаться онлайн',
+      nav_home: 'Главная', nav_services: 'Услуги', nav_stylists: 'Мастера', nav_book: 'Запись',
+      bento_badge: 'НОВЫЙ СЕЗОН', bento_title: 'Фейшел «Розовый кварц»',
+      bento_text: 'Лифтинг-массаж, пептиды и холодные пластины: кожа выглядит отдохнувшей и сияющей — идеально перед мероприятием или после городского стресса.',
+      bento_cta: 'Смотреть услуги', card_lux_title: 'Этичная роскошь',
+      card_lux_text: 'Профессиональная косметика без тестов на животных и забота об экологии упаковки.',
+      card_suite_title: 'Приватный кабинет', card_suite_text: 'Отдельные зоны для окрашивания и SPA: тишина, аромат и только вы.',
+      sec_services_title: 'Популярные услуги', sec_services_sub: 'Выберите услугу в блоке записи или нажмите «Записаться».',
+      sec_artisans_title: 'Наши мастера', sec_artisans_sub: 'Колористы, визажисты и топ-специалисты по уходу.', sec_artisans_cta: 'Записаться к мастеру',
+      booking_title: 'Онлайн-запись', step1_desc: 'Шаг 1 — выберите услугу', step2_desc: 'Шаг 2 — выберите мастера', step3_desc: 'Шаг 3 — дата и время', step4_desc: 'Шаг 4 — контакты',
+      slots_title: 'Свободные слоты', sum_service: 'Услуга:', sum_master: 'Мастер:', sum_time: 'Время:',
+      label_name: 'Имя', label_phone: 'Телефон (только цифры)', ph_name: 'Как к вам обращаться', ph_phone: '998901234567',
+      phone_hint: 'Введите номер только цифрами (Узбекистан: 998…).',
+      btn_confirm: 'Подтвердить запись', btn_back: 'Назад', btn_next: 'Далее', price_from: 'от', book_btn: 'Записаться', pick_master: 'Выбрать мастера', pick_date_first: 'Сначала выберите дату',
+      toast_service_first: 'Сначала выберите услугу — так мы подготовим всё к вашему визиту.',
+      toast_service_nav: 'Сначала выберите услугу в форме записи.', toast_pick_service: 'Выберите услугу, чтобы перейти к выбору мастера.',
+      toast_pick_master: 'Выберите мастера.', toast_pick_datetime: 'Выберите дату и время.', toast_fill_steps: 'Заполните все шаги записи.',
+      toast_name: 'Пожалуйста, укажите ваше имя.', toast_phone: 'Введите корректный номер (только цифры, не короче 9).',
+      sending: 'Отправка…', booking_sent: 'Запись отправлена! Мы свяжемся с вами в ближайшее время.', booking_ok_toast: 'Заявка успешно отправлена',
+      network_err: 'Ошибка сети. Откройте сайт через Vercel или vercel dev.',
+      step_dot_1: 'Услуга', step_dot_2: 'Мастер', step_dot_3: 'Дата', step_dot_4: 'Контакты',
+      submit_fail: 'Не удалось отправить. Проверьте настройки бота.',
+    },
+    uz: {
+      page_title: "L'Atelier de Beauté | Onlayn yozilish",
+      aria_menu: 'Menyu', aria_close: 'Yopish', aria_quick_book: 'Tez yozilish',
+      hero_kicker: "Go'zallik har detayda", hero_cta: 'Onlayn yozilish',
+      nav_home: 'Bosh sahifa', nav_services: 'Xizmatlar', nav_stylists: 'Ustalar', nav_book: 'Yozilish',
+      bento_badge: 'YANGI MAVSUM', bento_title: '«Rose Quartz» feshial',
+      bento_text: 'Lifting-massaj, peptidlar va sovuq plitalar: teri tinch va porloq ko‘rinadi.',
+      bento_cta: 'Xizmatlarni ko‘rish', card_lux_title: 'Axloqiy hasham',
+      card_lux_text: 'Professional kosmetika, hayvonlarda sinov yo‘q.', card_suite_title: 'Shaxsiy kabinet',
+      card_suite_text: 'Bo‘yash va SPA uchun alohida zonalar.', sec_services_title: 'Mashhur xizmatlar',
+      sec_services_sub: 'Yozilishda xizmatni tanlang yoki «Yozilish» bosing.', sec_artisans_title: 'Bizning ustalar',
+      sec_artisans_sub: 'Koloristlar, vizajistler va parvarish bo‘yicha mutaxassislar.', sec_artisans_cta: 'Ustaga yozilish',
+      booking_title: 'Onlayn yozilish', step1_desc: '1-qadam — xizmatni tanlang', step2_desc: '2-qadam — ustani tanlang', step3_desc: '3-qadam — sana va vaqt', step4_desc: '4-qadam — kontaktlar',
+      slots_title: 'Bo‘sh vaqtlar', sum_service: 'Xizmat:', sum_master: 'Usta:', sum_time: 'Vaqt:',
+      label_name: 'Ism', label_phone: 'Telefon (faqat raqamlar)', ph_name: 'Qanday murojaat qilamiz?', ph_phone: '998901234567',
+      phone_hint: 'Faqat raqam (O‘zbekiston: 998…).', btn_confirm: 'Yozilishni tasdiqlash', btn_back: 'Orqaga', btn_next: 'Keyingi',
+      price_from: 'dan', book_btn: 'Yozilish', pick_master: 'Ustani tanlash', pick_date_first: 'Avval sanani tanlang',
+      toast_service_first: 'Avval xizmatni tanlang.', toast_service_nav: 'Avval yozilishda xizmatni tanlang.',
+      toast_pick_service: 'Ustadan oldin xizmatni tanlang.', toast_pick_master: 'Ustani tanlang.', toast_pick_datetime: 'Sanani va vaqtni tanlang.',
+      toast_fill_steps: 'Barcha qadamlarni to‘ldiring.', toast_name: 'Ismingizni kiriting.', toast_phone: 'To‘g‘ri telefon (kamida 9 raqam).',
+      sending: 'Jo‘natilmoqda…', booking_sent: 'Yozilish yuborildi! Tez orada bog‘lanamiz.', booking_ok_toast: 'Ariza yuborildi', network_err: 'Tarmoq xatosi.',
+      step_dot_1: 'Xizmat', step_dot_2: 'Usta', step_dot_3: 'Sana', step_dot_4: 'Kontakt',
+      submit_fail: 'Yuborib bo‘lmadi. Bot sozlamalarini tekshiring.',
+    },
+    en: {
+      page_title: "L'Atelier de Beauté | Book online",
+      aria_menu: 'Menu', aria_close: 'Close', aria_quick_book: 'Quick booking',
+      hero_kicker: 'Beauty in every detail', hero_cta: 'Book online',
+      nav_home: 'Home', nav_services: 'Services', nav_stylists: 'Team', nav_book: 'Book',
+      bento_badge: 'NEW SEASON', bento_title: 'Rose Quartz facial',
+      bento_text: 'Lifting massage, peptides and cooling plates — skin looks rested and bright.',
+      bento_cta: 'Browse services', card_lux_title: 'Conscious luxury', card_lux_text: 'Professional, cruelty-free products.',
+      card_suite_title: 'Private suite', card_suite_text: 'Dedicated zones for color and spa.', sec_services_title: 'Popular services',
+      sec_services_sub: 'Pick a service in booking or tap Book.', sec_artisans_title: 'Our artists',
+      sec_artisans_sub: 'Colorists, makeup artists and care specialists.', sec_artisans_cta: 'Book a stylist',
+      booking_title: 'Online booking', step1_desc: 'Step 1 — choose a service', step2_desc: 'Step 2 — choose a stylist', step3_desc: 'Step 3 — date and time', step4_desc: 'Step 4 — your details',
+      slots_title: 'Available slots', sum_service: 'Service:', sum_master: 'Stylist:', sum_time: 'Time:',
+      label_name: 'Name', label_phone: 'Phone (digits only)', ph_name: 'How should we address you?', ph_phone: '998901234567',
+      phone_hint: 'Digits only (Uzbekistan: 998…).', btn_confirm: 'Confirm booking', btn_back: 'Back', btn_next: 'Next',
+      price_from: 'from', book_btn: 'Book', pick_master: 'Choose stylist', pick_date_first: 'Choose a date first',
+      toast_service_first: 'Please choose a service first.', toast_service_nav: 'Choose a service in the form first.',
+      toast_pick_service: 'Select a service before choosing a stylist.', toast_pick_master: 'Select a stylist.', toast_pick_datetime: 'Select date and time.',
+      toast_fill_steps: 'Complete all steps.', toast_name: 'Please enter your name.', toast_phone: 'Valid phone (digits, min 9).',
+      sending: 'Sending…', booking_sent: "We'll contact you shortly.", booking_ok_toast: 'Submitted', network_err: 'Network error.',
+      step_dot_1: 'Service', step_dot_2: 'Stylist', step_dot_3: 'Date', step_dot_4: 'Contact',
+      submit_fail: 'Could not send. Check bot settings.',
+    },
+  };
+
+  function t(key) {
+    var pack = I18N[LANG] || I18N.ru;
+    if (pack[key] !== undefined && pack[key] !== '') return pack[key];
+    return I18N.ru[key] || key;
+  }
+
+  function formatUzs(amount) {
+    return String(Math.round(amount)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + " so'm";
+  }
+
+  function priceLine(amount) {
+    return t('price_from') + ' ' + formatUzs(amount);
+  }
+
+  function txt(obj) {
+    return (obj && obj[LANG]) || (obj && obj.ru) || '';
+  }
+
+  function applyStaticI18n() {
+    document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n');
+      if (k) el.textContent = t(k);
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n-placeholder');
+      if (k) el.setAttribute('placeholder', t(k));
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+      var k = el.getAttribute('data-i18n-aria');
+      if (k) el.setAttribute('aria-label', t(k));
+    });
+    document.documentElement.lang = LANG === 'uz' ? 'uz' : LANG === 'en' ? 'en' : 'ru';
+    document.title = t('page_title');
+    document.querySelectorAll('.lang-btn').forEach(function (b) {
+      var on = b.getAttribute('data-lang') === LANG;
+      b.classList.toggle('lang-btn-active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  function setLang(next) {
+    if (next !== 'ru' && next !== 'uz' && next !== 'en') return;
+    LANG = next;
+    try { localStorage.setItem(LANG_STORAGE, LANG); } catch (e) {}
+    applyStaticI18n();
+    renderBookingServices();
+    renderBookingMasters();
+    renderServicesPreview();
+    renderStylistsRow();
+    if (state.step === 3) renderCalendar();
+    goStep(state.step);
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
+  });
+
+  var MONTHS_GEN_RU = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+  var MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var MONTHS_CAL_RU = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+  var MONTHS_CAL_UZ = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
+  var MONTHS_CAL_EN = MONTHS_EN;
+
+  var WEEKDAYS_RU = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+  var WEEKDAYS_UZ = ['Du', 'Se', 'Ch', 'Pa', 'Ju', 'Sh', 'Ya'];
+  var WEEKDAYS_EN = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+
+  function formatSummaryDate(d, timeSlot) {
+    if (!d || !timeSlot) return '—';
+    if (LANG === 'ru') return d.d + ' ' + MONTHS_GEN_RU[d.m] + ' ' + d.y + ', ' + timeSlot;
+    if (LANG === 'en') return MONTHS_EN[d.m] + ' ' + d.d + ', ' + d.y + ' · ' + timeSlot;
+    return d.d + '.' + (d.m + 1 < 10 ? '0' : '') + (d.m + 1) + '.' + d.y + ', ' + timeSlot;
+  }
+
+  function calMonthLabel(y, m) {
+    if (LANG === 'uz') return MONTHS_CAL_UZ[m] + ' ' + y;
+    if (LANG === 'en') return MONTHS_CAL_EN[m] + ' ' + y;
+    return MONTHS_CAL_RU[m] + ' ' + y;
+  }
+
+  function calWeekdays() {
+    if (LANG === 'uz') return WEEKDAYS_UZ;
+    if (LANG === 'en') return WEEKDAYS_EN;
+    return WEEKDAYS_RU;
+  }
+
   var SERVICES = [
-    { id: 'smart-manicure', name: 'Смарт-маникюр', desc: 'Аппаратный маникюр и покрытие гель-лаком, уход за кутикулой.', price: 'от 2 400 ₽', duration: '90 мин' },
-    { id: 'airtouch', name: 'Окрашивание AirTouch', desc: 'Плавные блики и объём без жёсткой линии у корней.', price: 'от 8 500 ₽', duration: '3–4 ч' },
-    { id: 'care-styling', name: 'Укладка и SPA-уход', desc: 'Маска, массаж кожи головы и укладка на браш.', price: 'от 3 200 ₽', duration: '60 мин' },
-    { id: 'express-makeup', name: 'Экспресс-макияж', desc: 'Дневной или вечерний образ за один приём.', price: 'от 2 800 ₽', duration: '45 мин' },
-    { id: 'brow', name: 'Ламинирование бровей', desc: 'Фиксация, окрашивание и укладка бровей.', price: 'от 2 200 ₽', duration: '60 мин' },
-    { id: 'facial', name: 'Glow-фейшел', desc: 'Мягкий пилинг, увлажнение и сияние кожи.', price: 'от 4 500 ₽', duration: '75 мин' },
+    { id: 'smart-manicure', priceUzs: 480000, duration: { ru: '90 мин', uz: '90 daqiqa', en: '90 min' },
+      name: { ru: 'Смарт-маникюр', uz: 'Smart manikyur', en: 'Smart manicure' },
+      desc: { ru: 'Аппаратный маникюр и покрытие гель-лаком, уход за кутикулой.', uz: 'Apparat manikyur va gel-lak, kutikula parvarishi.', en: 'E-file manicure, gel polish and cuticle care.' } },
+    { id: 'airtouch', priceUzs: 1700000, duration: { ru: '3–4 ч', uz: '3–4 soat', en: '3–4 hrs' },
+      name: { ru: 'Окрашивание AirTouch', uz: 'AirTouch bo‘yash', en: 'AirTouch color' },
+      desc: { ru: 'Плавные блики и объём без жёсткой линии у корней.', uz: 'Yumshoq yo‘nalishlar va hajm.', en: 'Soft dimension without a harsh root line.' } },
+    { id: 'care-styling', priceUzs: 640000, duration: { ru: '60 мин', uz: '60 daqiqa', en: '60 min' },
+      name: { ru: 'Укладка и SPA-уход', uz: 'Turmaklash va SPA', en: 'Blowout & spa care' },
+      desc: { ru: 'Маска, массаж кожи головы и укладка на браш.', uz: 'Niqob, bosh terisi massaji va brush turmaklash.', en: 'Mask, scalp massage and brush styling.' } },
+    { id: 'express-makeup', priceUzs: 560000, duration: { ru: '45 мин', uz: '45 daqiqa', en: '45 min' },
+      name: { ru: 'Экспресс-макияж', uz: 'Ekspress makiyaj', en: 'Express makeup' },
+      desc: { ru: 'Дневной или вечерний образ за один приём.', uz: 'Kunduzgi yoki kechki imij bir seansda.', en: 'Day or evening look in one session.' } },
+    { id: 'brow', priceUzs: 440000, duration: { ru: '60 мин', uz: '60 daqiqa', en: '60 min' },
+      name: { ru: 'Ламинирование бровей', uz: 'Qosh laminatsiyasi', en: 'Brow lamination' },
+      desc: { ru: 'Фиксация, окрашивание и укладка бровей.', uz: 'Fixatsiya, bo‘yash va turmaklash.', en: 'Lift, tint and shape.' } },
+    { id: 'facial', priceUzs: 900000, duration: { ru: '75 мин', uz: '75 daqiqa', en: '75 min' },
+      name: { ru: 'Glow-фейшел', uz: 'Glow feshial', en: 'Glow facial' },
+      desc: { ru: 'Мягкий пилинг, увлажнение и сияние кожи.', uz: 'Yumshoq piling, namlantirish va porloq teri.', en: 'Gentle peel, hydration and glow.' } },
   ];
 
   var MASTERS = [
-    { id: 'nastya', name: 'Анастасия Волкова', role: 'Колорист, AirTouch', img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&h=500&q=80' },
-    { id: 'marina', name: 'Марина Соколова', role: 'Визажист', img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&h=500&q=80' },
-    { id: 'elena', name: 'Елена Росси', role: 'Эстетист, уход за лицом', img: 'https://images.unsplash.com/photo-1544005313-94ddf0286ad2?auto=format&fit=crop&w=400&h=500&q=80' },
-    { id: 'olga', name: 'Ольга Ким', role: 'Топ-мастер маникюра', img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=500&q=80' },
+    { id: 'nastya', name: 'Анастасия Волкова', role: { ru: 'Колорист, AirTouch', uz: 'Kolorist, AirTouch', en: 'Master colorist, AirTouch' }, img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&h=500&q=80' },
+    { id: 'marina', name: 'Марина Соколова', role: { ru: 'Визажист', uz: 'Vizajist', en: 'Makeup artist' }, img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&h=500&q=80' },
+    { id: 'elena', name: 'Елена Росси', role: { ru: 'Эстетист, уход за лицом', uz: 'Estetist, yuz parvarishi', en: 'Esthetician, facial care' }, img: 'https://images.unsplash.com/photo-1544005313-94ddf0286ad2?auto=format&fit=crop&w=400&h=500&q=80' },
+    { id: 'olga', name: 'Ольга Ким', role: { ru: 'Топ-мастер маникюра', uz: 'Top manikyur ustasi', en: 'Lead nail artist' }, img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=500&q=80' },
   ];
 
   /**
@@ -375,12 +569,12 @@
     $all('.booking-step-pane').forEach(function (el) {
       el.classList.toggle('is-active', parseInt(el.getAttribute('data-step'), 10) === n);
     });
-    var labels = ['Услуга', 'Мастер', 'Дата', 'Контакты'];
+    var labels = [t('step_dot_1'), t('step_dot_2'), t('step_dot_3'), t('step_dot_4')];
     $('#step-dots').innerHTML = labels.map(function (l, i) {
       var num = i + 1;
       var active = num === n ? 'text-primary bg-primary-container px-2 py-1 rounded-lg' : 'text-on-surface-variant';
       return '<span class="' + active + '">' + num + '. ' + l + '</span>';
-    }).join(' <span class="text-rose-200">·</span> ');
+    }).join(' <span class="text-rose-400 font-bold">·</span> ');
 
     $('#btn-back').classList.toggle('hidden', n === 1);
     $('#btn-next').classList.toggle('hidden', n === 4);
@@ -406,10 +600,10 @@
     var wrap = $('#booking-services');
     wrap.innerHTML = SERVICES.map(function (s) {
       return (
-        '<button type="button" class="svc-card w-full text-left rounded-2xl border border-rose-100 bg-white/90 p-4 hover:border-primary/50 hover:bg-rose-50/50 transition-all" data-id="' + s.id + '">' +
-        '<div class="font-notoSerif text-lg text-rose-950">' + s.name + '</div>' +
-        '<div class="text-xs text-on-surface-variant mt-1">' + s.duration + ' · ' + s.price + '</div>' +
-        '<div class="text-sm text-on-surface-variant mt-2">' + s.desc + '</div></button>'
+        '<button type="button" class="svc-card w-full text-left rounded-2xl border-2 border-rose-200 bg-white/95 p-4 hover:border-primary hover:bg-rose-50/80 transition-all" data-id="' + s.id + '">' +
+        '<div class="font-notoSerif text-lg text-rose-950 font-semibold">' + txt(s.name) + '</div>' +
+        '<div class="text-xs text-on-surface-variant mt-1 font-semibold">' + txt(s.duration) + ' · ' + priceLine(s.priceUzs) + '</div>' +
+        '<div class="text-sm text-on-surface mt-2">' + txt(s.desc) + '</div></button>'
       );
     }).join('');
     wrap.querySelectorAll('.svc-card').forEach(function (btn) {
@@ -425,15 +619,15 @@
     var wrap = $('#booking-masters');
     wrap.innerHTML = MASTERS.map(function (m) {
       return (
-        '<button type="button" class="master-card w-full flex gap-4 items-center rounded-2xl border border-rose-100 bg-white/90 p-3 hover:border-primary/50 hover:bg-rose-50/50 transition-all text-left" data-id="' + m.id + '">' +
-        '<img src="' + m.img + '" alt="" class="w-16 h-16 rounded-xl object-cover shrink-0 border border-rose-100"/>' +
-        '<div><div class="font-notoSerif text-rose-950">' + m.name + '</div><div class="text-xs text-primary uppercase tracking-wide mt-0.5">' + m.role + '</div></div></button>'
+        '<button type="button" class="master-card w-full flex gap-4 items-center rounded-2xl border-2 border-rose-200 bg-white/95 p-3 hover:border-primary hover:bg-rose-50/80 transition-all text-left" data-id="' + m.id + '">' +
+        '<img src="' + m.img + '" alt="" class="w-16 h-16 rounded-xl object-cover shrink-0 border border-rose-200"/>' +
+        '<div><div class="font-notoSerif text-rose-950 font-semibold">' + m.name + '</div><div class="text-xs text-primary font-bold uppercase tracking-wide mt-0.5">' + txt(m.role) + '</div></div></button>'
       );
     }).join('');
     wrap.querySelectorAll('.master-card').forEach(function (btn) {
       btn.addEventListener('click', function () {
         if (!state.service) {
-          showToast('Сначала выберите услугу — так мы подготовим всё к вашему визиту.');
+          showToast(t('toast_service_first'));
           return;
         }
         var id = btn.getAttribute('data-id');
@@ -446,11 +640,10 @@
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
   function renderCalendar() {
-    var weekdays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+    var weekdays = calWeekdays();
     $('#cal-weekdays').innerHTML = weekdays.map(function (d) { return '<div>' + d + '</div>'; }).join('');
     var y = state.calYear, m = state.calMonth;
-    var monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-    $('#cal-label').textContent = monthNames[m] + ' ' + y;
+    $('#cal-label').textContent = calMonthLabel(y, m);
 
     var first = new Date(y, m, 1);
     var start = (first.getDay() + 6) % 7;
@@ -465,10 +658,10 @@
       var isPast = dt < today;
       var isSel = state.date && state.date.y === y && state.date.m === m && state.date.d === d;
       var cls = 'h-9 rounded-lg text-sm flex items-center justify-center ';
-      if (isPast) cls += 'text-rose-200 cursor-not-allowed';
+      if (isPast) cls += 'text-rose-300 cursor-not-allowed';
       else {
-        cls += 'cursor-pointer hover:bg-rose-100 text-rose-900 ';
-        if (isSel) cls += 'bg-primary text-white hover:bg-tertiary font-semibold shadow-md shadow-rose-300/40 ';
+        cls += 'cursor-pointer hover:bg-rose-100 text-rose-950 font-medium ';
+        if (isSel) cls += 'bg-primary text-white hover:bg-tertiary font-bold shadow-md shadow-rose-400/50 ';
       }
       cells.push('<button type="button" class="' + cls + '" data-day="' + d + '"' + (isPast ? ' disabled' : '') + '">' + d + '</button>');
     }
@@ -489,16 +682,16 @@
     var slots = ['10:00', '11:00', '12:30', '14:00', '15:30', '17:00', '18:30'];
     var wrap = $('#time-slots');
     if (!state.date) {
-      wrap.innerHTML = '<span class="text-xs text-on-surface-variant">Сначала выберите дату</span>';
+      wrap.innerHTML = '<span class="text-xs text-on-surface-variant font-semibold">' + t('pick_date_first') + '</span>';
       return;
     }
-    wrap.innerHTML = slots.map(function (t) {
-      var sel = state.time === t;
+    wrap.innerHTML = slots.map(function (slot) {
+      var sel = state.time === slot;
       var cls = 'px-4 py-2 rounded-full text-sm font-medium border transition-all ';
       cls += sel
-        ? 'bg-primary text-white border-primary shadow-md shadow-rose-200/50'
-        : 'border-rose-200 text-rose-900 hover:border-primary hover:bg-rose-50';
-      return '<button type="button" class="' + cls + '" data-time="' + t + '">' + t + '</button>';
+        ? 'bg-primary text-white border-primary shadow-md shadow-rose-300/50'
+        : 'border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-100';
+      return '<button type="button" class="' + cls + '" data-time="' + slot + '">' + slot + '</button>';
     }).join('');
     wrap.querySelectorAll('button[data-time]').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -520,15 +713,10 @@
   });
 
   function updateSummary() {
-    var s = state.service, m = state.master, d = state.date, t = state.time;
-    $('#sum-service').textContent = s ? s.name : '—';
+    var s = state.service, m = state.master, d = state.date, tm = state.time;
+    $('#sum-service').textContent = s ? txt(s.name) : '—';
     $('#sum-master').textContent = m ? m.name : '—';
-    if (d && t) {
-      var monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-      $('#sum-datetime').textContent = d.d + ' ' + monthNames[d.m] + ' ' + d.y + ', ' + t;
-    } else {
-      $('#sum-datetime').textContent = '—';
-    }
+    $('#sum-datetime').textContent = d && tm ? formatSummaryDate(d, tm) : '—';
   }
 
   function digitsOnlyPhone(raw) {
@@ -544,18 +732,18 @@
   $('#input-phone').addEventListener('input', function () {
     var v = digitsOnlyPhone($('#input-phone').value);
     $('#input-phone').value = v;
-    setPhoneHint(v.length > 0 && v.length < 10);
+    setPhoneHint(v.length > 0 && v.length < 9);
   });
 
   $('#btn-next').addEventListener('click', function () {
     if (state.step === 1) {
-      if (!state.service) { showToast('Выберите услугу, чтобы перейти к выбору мастера.'); return; }
+      if (!state.service) { showToast(t('toast_pick_service')); return; }
       goStep(2);
     } else if (state.step === 2) {
-      if (!state.master) { showToast('Выберите мастера.'); return; }
+      if (!state.master) { showToast(t('toast_pick_master')); return; }
       goStep(3);
     } else if (state.step === 3) {
-      if (!state.date || !state.time) { showToast('Выберите дату и время.'); return; }
+      if (!state.date || !state.time) { showToast(t('toast_pick_datetime')); return; }
       goStep(4);
     }
   });
@@ -567,22 +755,21 @@
   $('#btn-submit').addEventListener('click', async function () {
     var name = ($('#input-name').value || '').trim();
     var phone = digitsOnlyPhone($('#input-phone').value);
-    setPhoneHint(phone.length > 0 && phone.length < 10);
+    setPhoneHint(phone.length > 0 && phone.length < 9);
 
     if (!state.service || !state.master || !state.date || !state.time) {
-      showToast('Заполните все шаги записи.');
+      showToast(t('toast_fill_steps'));
       return;
     }
-    if (!name) { showToast('Пожалуйста, укажите ваше имя.'); return; }
-    if (phone.length < 10) { showToast('Введите корректный номер телефона (только цифры, не короче 10).'); setPhoneHint(true); return; }
+    if (!name) { showToast(t('toast_name')); return; }
+    if (phone.length < 9) { showToast(t('toast_phone')); setPhoneHint(true); return; }
 
-    var monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-    var timeStr = state.date.d + ' ' + monthNames[state.date.m] + ' ' + state.date.y + ', ' + state.time;
+    var timeStr = formatSummaryDate(state.date, state.time);
 
     var payload = {
       name: name,
       phone: phone,
-      service: state.service.name,
+      service: txt(state.service.name),
       master: state.master.name,
       time: timeStr,
     };
@@ -590,7 +777,7 @@
     var statusEl = $('#submit-status');
     var btn = $('#btn-submit');
     btn.disabled = true;
-    statusEl.textContent = 'Отправка…';
+    statusEl.textContent = t('sending');
     statusEl.className = 'text-center text-sm mt-3 text-on-surface-variant';
 
     try {
@@ -601,9 +788,9 @@
       });
       var data = await res.json().catch(function () { return {}; });
       if (res.ok && data.ok) {
-        statusEl.textContent = 'Запись отправлена! Мы свяжемся с вами в ближайшее время.';
-        statusEl.className = 'text-center text-sm mt-3 text-primary font-medium';
-        showToast('Заявка успешно отправлена');
+        statusEl.textContent = t('booking_sent');
+        statusEl.className = 'text-center text-sm mt-3 text-primary font-bold';
+        showToast(t('booking_ok_toast'));
         setTimeout(function () {
           closeBooking();
           state.step = 1;
@@ -615,11 +802,11 @@
           goStep(1);
         }, 2000);
       } else {
-        statusEl.textContent = (data && data.error) ? data.error : 'Не удалось отправить. Проверьте настройки бота на сервере.';
+        statusEl.textContent = (data && data.error) ? data.error : t('submit_fail');
         statusEl.className = 'text-center text-sm mt-3 text-red-600';
       }
     } catch (e) {
-      statusEl.textContent = 'Ошибка сети. Для локального файла откройте сайт через Vercel или vercel dev.';
+      statusEl.textContent = t('network_err');
       statusEl.className = 'text-center text-sm mt-3 text-red-600';
     }
     btn.disabled = false;
@@ -692,8 +879,8 @@
       var key = tab.getAttribute('data-nav');
       var on = key === active;
       tab.classList.toggle('text-primary', on);
-      tab.classList.toggle('bg-rose-100/70', on);
-      tab.classList.toggle('text-rose-400', !on);
+      tab.classList.toggle('bg-rose-100', on);
+      tab.classList.toggle('text-rose-700', !on);
       var icon = tab.querySelector('.material-symbols-outlined');
       if (icon) icon.style.fontVariationSettings = on ? "'FILL' 1" : "'FILL' 0";
     });
@@ -703,11 +890,11 @@
   function renderServicesPreview() {
     $('#services-preview').innerHTML = SERVICES.slice(0, 3).map(function (s) {
       return (
-        '<div class="rounded-2xl border border-rose-100 bg-white p-5 shadow-sm">' +
-        '<div class="font-notoSerif text-lg text-rose-950">' + s.name + '</div>' +
-        '<p class="text-sm text-on-surface-variant mt-2">' + s.desc + '</p>' +
-        '<p class="text-xs text-primary mt-3 font-medium">' + s.price + ' · ' + s.duration + '</p>' +
-        '<button type="button" data-open-booking class="mt-4 text-sm font-medium text-primary hover:underline">Записаться</button></div>'
+        '<div class="rounded-2xl border-2 border-rose-200 bg-white p-5 shadow-md">' +
+        '<div class="font-notoSerif text-lg text-rose-950 font-bold">' + txt(s.name) + '</div>' +
+        '<p class="text-sm text-on-surface mt-2">' + txt(s.desc) + '</p>' +
+        '<p class="text-xs text-primary mt-3 font-bold">' + priceLine(s.priceUzs) + ' · ' + txt(s.duration) + '</p>' +
+        '<button type="button" data-open-booking class="mt-4 text-sm font-bold text-primary hover:underline">' + t('book_btn') + '</button></div>'
       );
     }).join('');
   }
@@ -719,8 +906,8 @@
         '<div class="h-96 rounded-2xl overflow-hidden mb-4 border border-rose-100 shadow-md">' +
         '<img alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="' + m.img + '"/></div>' +
         '<h4 class="font-notoSerif text-lg text-rose-950">' + m.name + '</h4>' +
-        '<p class="text-on-surface-variant text-xs uppercase tracking-widest text-primary/90">' + m.role + '</p>' +
-        '<button type="button" class="pick-master mt-3 text-sm font-medium text-primary hover:underline" data-master-id="' + m.id + '">Выбрать мастера</button></div>'
+        '<p class="text-on-surface text-xs uppercase tracking-widest text-primary font-bold">' + txt(m.role) + '</p>' +
+        '<button type="button" class="pick-master mt-3 text-sm font-bold text-primary hover:underline" data-master-id="' + m.id + '">' + t('pick_master') + '</button></div>'
       );
     }).join('');
     $('#stylists-row').querySelectorAll('.pick-master').forEach(function (b) {
@@ -728,7 +915,7 @@
         var id = b.getAttribute('data-master-id');
         var master = MASTERS.find(function (x) { return x.id === id; });
         if (!state.service) {
-          showToast('Сначала выберите услугу в форме записи.');
+          showToast(t('toast_service_nav'));
           state.step = 1;
           goStep(1);
           openBooking();
@@ -742,6 +929,7 @@
     });
   }
 
+  applyStaticI18n();
   renderBookingServices();
   renderBookingMasters();
   renderServicesPreview();
