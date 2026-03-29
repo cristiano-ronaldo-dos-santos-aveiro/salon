@@ -38,7 +38,8 @@
             full: "9999px",
           },
           keyframes: {
-            toastIn: { "0%": { opacity: "0", transform: "translateY(-12px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
+            /* только opacity: transform ломал центрирование left-1/2 и текст на iOS/WebKit */
+            toastIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
             modalIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
             /* Без transform: на части Android (Samsung WebView) transform + overflow даёт «призрачный» дубликат текста */
             panelIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
@@ -144,12 +145,19 @@
       visibility: visible;
     }
     #mobile-menu:not(.hidden) { animation: modalIn 0.25s ease-out forwards; }
+    #toast-panel {
+      background-color: #4a044e;
+      color: #fff;
+      -webkit-text-fill-color: #fff;
+      border: 2px solid #f472b6;
+      box-shadow: 0 8px 32px rgba(74, 4, 78, 0.45);
+    }
   </style>
 </head>
 <body class="text-on-surface antialiased overflow-x-hidden">
-  <!-- Toast -->
-  <div id="toast" class="fixed top-24 left-1/2 -translate-x-1/2 z-[200] max-w-[90vw] hidden pointer-events-none" role="status" aria-live="polite">
-    <div class="pointer-events-auto rounded-2xl bg-rose-950/92 text-white px-5 py-3 text-sm shadow-xl border border-rose-400/30"></div>
+  <!-- Toast: обёртка без transform-анимации — иначе на iOS пропадает текст -->
+  <div id="toast" class="fixed top-16 sm:top-20 left-0 right-0 z-[500] flex justify-center px-4 hidden pointer-events-none" role="alert" aria-live="assertive">
+    <div id="toast-panel" class="pointer-events-auto w-full max-w-sm rounded-2xl px-4 py-3.5 text-sm font-medium leading-snug animate-toastIn"></div>
   </div>
 
   <!-- Mobile menu -->
@@ -576,16 +584,20 @@
   function $all(sel) { return document.querySelectorAll(sel); }
 
   function showToast(message) {
-    var t = $('#toast');
-    var inner = t.querySelector('div');
-    inner.textContent = message;
-    t.classList.remove('hidden');
-    t.classList.add('animate-toastIn');
+    var text = (message != null && String(message).trim() !== '') ? String(message) : '…';
+    var toastRoot = $('#toast');
+    var panel = $('#toast-panel');
+    if (!toastRoot || !panel) return;
+    panel.textContent = text;
+    toastRoot.classList.remove('hidden');
+    panel.classList.remove('animate-toastIn');
+    void panel.offsetWidth;
+    panel.classList.add('animate-toastIn');
     clearTimeout(showToast._id);
     showToast._id = setTimeout(function () {
-      t.classList.add('hidden');
-      t.classList.remove('animate-toastIn');
-    }, 3200);
+      toastRoot.classList.add('hidden');
+      panel.classList.remove('animate-toastIn');
+    }, 3600);
   }
 
   function openBooking() {
