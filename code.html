@@ -92,6 +92,20 @@
       color: #fff !important;
       border-color: transparent !important;
     }
+    .card-photo {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 12rem;
+      object-fit: cover;
+      object-position: center;
+    }
+    .nav-icon-svg {
+      width: 1.75rem;
+      height: 1.75rem;
+      flex-shrink: 0;
+      color: currentColor;
+    }
     @keyframes panelIn {
       from { opacity: 0; }
       to { opacity: 1; }
@@ -150,20 +164,27 @@
 
   <header class="fixed top-0 w-full flex justify-between items-center gap-2 px-3 sm:px-6 py-3 sm:py-4 bg-white/90 backdrop-blur-md z-50 border-b border-rose-300/70">
     <div class="flex items-center gap-2 sm:gap-4 shrink-0">
-      <button type="button" id="btn-menu" class="material-symbols-outlined text-rose-950 hover:text-primary transition-colors cursor-pointer p-1 rounded-full hover:bg-rose-100" data-i18n-aria="aria_menu">menu</button>
+      <button type="button" id="btn-menu" class="text-rose-950 hover:text-primary transition-colors cursor-pointer p-2 rounded-full hover:bg-rose-100 flex items-center justify-center" data-i18n-aria="aria_menu">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
     <h1 class="font-notoSerif italic text-rose-950 text-lg sm:text-xl tracking-tight shrink-0">L'Atelier</h1>
-    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0" id="lang-switch" role="group" aria-label="Language">
-      <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="ru" aria-pressed="true">RU</button>
-      <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="uz" aria-pressed="false">UZ</button>
-      <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="en" aria-pressed="false">EN</button>
+    <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+      <div class="flex items-center gap-1" id="lang-switch" role="group" aria-label="Language">
+        <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="uz" aria-pressed="false">UZ</button>
+        <button type="button" class="lang-btn text-[11px] sm:text-xs font-bold px-2 py-1.5 rounded-lg border-2 border-rose-300 text-rose-950 hover:border-primary hover:bg-rose-50 transition-colors" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border-2 border-rose-300 shrink-0 shadow-md bg-rose-100" title="Salon">
+        <img alt="" class="w-full h-full object-cover" width="40" height="40" loading="eager" decoding="async" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=160&amp;h=160&amp;fit=crop&amp;q=80&amp;auto=format"/>
+      </div>
     </div>
   </header>
 
   <main class="relative min-h-screen pb-36">
     <section id="hero" class="relative h-[min(751px,92vh)] w-full overflow-hidden scroll-mt-20">
       <div class="absolute inset-0">
-        <img alt="" class="w-full h-full object-cover object-center" src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1920&q=85"/>
+        <img alt="" class="w-full h-full object-cover object-center" width="1920" height="1080" loading="eager" decoding="async" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=1920&amp;h=1080&amp;fit=crop&amp;q=85&amp;auto=format"/>
         <div class="absolute inset-0 bg-gradient-to-t from-rose-950/90 via-rose-950/50 to-pink-900/35"></div>
         <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-rose-950/60"></div>
       </div>
@@ -185,35 +206,36 @@
           <h3 class="font-notoSerif text-3xl text-rose-950 mb-4" data-i18n="bento_title">Фейшел «Розовый кварц»</h3>
           <p class="text-on-surface-variant font-normal leading-relaxed max-w-md" data-i18n="bento_text">Лифтинг-массаж, пептиды и холодные пластины: кожа выглядит отдохнувшей и сияющей — идеально перед мероприятием или после городского стресса.</p>
         </div>
-        <div class="mt-8 flex flex-wrap items-center justify-between gap-4">
-          <div class="flex -space-x-3">
-            <img class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" alt="" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=80&h=80&q=80"/>
-            <img class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" alt="" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=80&h=80&q=80"/>
-            <img class="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" alt="" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&h=80&q=80"/>
+        <div class="mt-8 flex flex-wrap items-center justify-between gap-4 pl-1">
+          <div class="flex items-center -space-x-2 sm:-space-x-3">
+            <img class="relative z-30 w-10 h-10 rounded-full border-2 border-white object-cover shadow-md bg-rose-100" alt="" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&amp;h=80&amp;fit=crop&amp;q=80&amp;auto=format"/>
+            <img class="relative z-20 w-10 h-10 rounded-full border-2 border-white object-cover shadow-md bg-rose-100" alt="" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&amp;h=80&amp;fit=crop&amp;q=80&amp;auto=format"/>
+            <img class="relative z-10 w-10 h-10 rounded-full border-2 border-white object-cover shadow-md bg-rose-100" alt="" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&amp;h=80&amp;fit=crop&amp;q=80&amp;auto=format"/>
             <div class="w-10 h-10 rounded-full border-2 border-white bg-primary-container flex items-center justify-center text-[10px] font-bold text-primary">+120</div>
           </div>
           <button type="button" data-scroll-to="#services-grid" class="text-primary font-bold flex items-center gap-2 hover:text-tertiary transition-colors">
-            <span data-i18n="bento_cta">Смотреть услуги</span> <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            <span data-i18n="bento_cta">Смотреть услуги</span>
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </button>
         </div>
       </div>
       <div class="bg-surface-container-lowest p-8 rounded-2xl flex flex-col justify-center text-center shadow-sm border border-rose-100/80">
         <div class="mb-6 w-16 h-16 silk-gradient rounded-full mx-auto flex items-center justify-center text-white shadow-lg shadow-rose-200/50">
-          <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+          <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.32 0z"/><path d="M12 12v8M8 14h8"/></svg>
         </div>
         <h3 class="font-notoSerif text-xl text-rose-950 mb-2" data-i18n="card_lux_title">Этичная роскошь</h3>
         <p class="text-on-surface-variant text-sm font-normal" data-i18n="card_lux_text">Профессиональная косметика без тестов на животных и забота об экологии упаковки.</p>
       </div>
-      <div class="bg-white rounded-2xl overflow-hidden h-[300px] shadow-md border border-rose-100/60">
-        <img alt="Маникюр" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80"/>
+      <div class="bg-white rounded-2xl overflow-hidden h-[280px] sm:h-[300px] shadow-md border-2 border-rose-200">
+        <img alt="" class="card-photo min-h-[280px] sm:min-h-[300px]" width="900" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=900&amp;h=600&amp;fit=crop&amp;q=80&amp;auto=format"/>
       </div>
       <div class="md:col-span-2 glass-card p-8 rounded-2xl grid grid-cols-1 sm:grid-cols-2 gap-8">
         <div class="flex flex-col justify-center">
           <h4 class="font-notoSerif text-2xl text-rose-950 mb-2" data-i18n="card_suite_title">Приватный кабинет</h4>
           <p class="text-on-surface-variant text-sm font-normal" data-i18n="card_suite_text">Отдельные зоны для окрашивания и SPA: тишина, аромат и только вы.</p>
         </div>
-        <div class="rounded-xl overflow-hidden h-48 sm:h-auto min-h-[12rem]">
-          <img alt="Кабинет" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80"/>
+        <div class="rounded-xl overflow-hidden border-2 border-rose-200 bg-rose-100 w-full h-56 sm:h-64 min-h-[14rem] relative">
+          <img alt="" class="absolute inset-0 w-full h-full object-cover" width="900" height="600" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&amp;h=600&amp;fit=crop&amp;q=80&amp;auto=format"/>
         </div>
       </div>
     </section>
@@ -231,7 +253,8 @@
           <p class="text-on-surface-variant font-medium mt-2" data-i18n="sec_artisans_sub">Колористы, визажисты и топ-специалисты по уходу.</p>
         </div>
         <button type="button" data-open-booking class="text-primary font-bold flex items-center gap-2 self-start hover:underline decoration-rose-300">
-          <span data-i18n="sec_artisans_cta">Записаться к мастеру</span> <span class="material-symbols-outlined text-sm">calendar_month</span>
+          <span data-i18n="sec_artisans_cta">Записаться к мастеру</span>
+          <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         </button>
       </div>
       <div class="flex overflow-x-auto gap-6 px-6 pb-8 no-scrollbar scroll-smooth" id="stylists-row"></div>
@@ -243,7 +266,9 @@
     <div id="booking-panel" class="bg-gradient-to-b from-white to-rose-50/90 w-full sm:max-w-lg sm:rounded-3xl rounded-t-3xl max-h-[92vh] overflow-hidden shadow-2xl border border-rose-100 flex flex-col">
       <div class="flex items-center justify-between px-6 py-4 border-b border-rose-200 bg-white/95">
         <h2 class="font-notoSerif text-xl text-rose-950" data-i18n="booking_title">Онлайн-запись</h2>
-        <button type="button" id="booking-close" class="material-symbols-outlined text-rose-950 hover:text-primary p-2 rounded-full hover:bg-rose-100 transition-colors" data-i18n-aria="aria_close">close</button>
+        <button type="button" id="booking-close" class="text-rose-950 hover:text-primary p-2 rounded-full hover:bg-rose-100 transition-colors flex items-center justify-center" data-i18n-aria="aria_close">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
       </div>
       <div class="px-6 py-3 flex flex-wrap gap-x-2 gap-y-1 text-[11px] sm:text-xs font-bold text-on-surface uppercase tracking-wide" id="step-dots"></div>
       <div class="px-6 pb-6 overflow-y-auto flex-1">
@@ -258,9 +283,13 @@
         <div id="step-3" class="booking-step-pane" data-step="3">
           <p class="text-sm text-on-surface-variant mb-4 font-semibold" data-i18n="step3_desc">Шаг 3 — дата и время</p>
           <div class="flex items-center justify-between mb-3">
-            <button type="button" id="cal-prev" class="p-2 rounded-full hover:bg-rose-100 text-rose-800 material-symbols-outlined text-xl">chevron_left</button>
+            <button type="button" id="cal-prev" class="p-2 rounded-full hover:bg-rose-100 text-rose-950 flex items-center justify-center" aria-label="Previous month">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
             <span id="cal-label" class="font-notoSerif text-lg text-rose-950"></span>
-            <button type="button" id="cal-next" class="p-2 rounded-full hover:bg-rose-100 text-rose-800 material-symbols-outlined text-xl">chevron_right</button>
+            <button type="button" id="cal-next" class="p-2 rounded-full hover:bg-rose-100 text-rose-950 flex items-center justify-center" aria-label="Next month">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
           </div>
           <div class="grid grid-cols-7 gap-1 text-center text-xs font-medium text-on-surface-variant mb-2" id="cal-weekdays"></div>
           <div class="grid grid-cols-7 gap-1 mb-6" id="cal-grid"></div>
@@ -292,28 +321,28 @@
     </div>
   </div>
 
-  <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 sm:px-4 pb-6 pt-3 bg-white/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(157,23,77,0.18)] rounded-t-[2.5rem] border-t-2 border-rose-200">
+  <nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 sm:px-4 pb-6 pt-3 bg-white/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(157,23,77,0.18)] rounded-t-[2.5rem] border-t-2 border-rose-200" aria-label="Main">
     <button type="button" data-nav="home" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-600 hover:text-primary transition-colors">
-      <span class="material-symbols-outlined text-2xl" data-fill="1">health_and_beauty</span>
+      <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5 font-bold" data-i18n="nav_home">Главная</span>
     </button>
     <button type="button" data-nav="services" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-600 hover:text-primary transition-colors">
-      <span class="material-symbols-outlined text-2xl">spa</span>
+      <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.32 0z"/><path d="M12 12v8M8 14h8"/></svg>
       <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5 font-bold" data-i18n="nav_services">Услуги</span>
     </button>
     <button type="button" data-nav="stylists" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-600 hover:text-primary transition-colors">
-      <span class="material-symbols-outlined text-2xl">content_cut</span>
+      <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
       <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5 font-bold" data-i18n="nav_stylists">Мастера</span>
     </button>
     <button type="button" data-nav="book" class="nav-tab flex flex-col items-center justify-center rounded-full px-4 py-2 text-rose-600 hover:text-primary transition-colors">
-      <span class="material-symbols-outlined text-2xl">calendar_month</span>
+      <svg class="nav-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
       <span class="font-plusJakartaSans text-[10px] tracking-wide uppercase mt-0.5 font-bold" data-i18n="nav_book">Запись</span>
     </button>
   </nav>
 
   <div class="md:hidden fixed right-5 bottom-28 z-40">
     <button type="button" data-open-booking class="w-14 h-14 silk-gradient rounded-full flex items-center justify-center text-white shadow-xl shadow-rose-600/50 active:scale-95 transition-transform" data-i18n-aria="aria_quick_book">
-      <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">event</span>
+      <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
     </button>
   </div>
 
@@ -512,10 +541,10 @@
   ];
 
   var MASTERS = [
-    { id: 'nastya', name: 'Анастасия Волкова', role: { ru: 'Колорист, AirTouch', uz: 'Kolorist, AirTouch', en: 'Master colorist, AirTouch' }, img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&h=500&q=80' },
-    { id: 'marina', name: 'Марина Соколова', role: { ru: 'Визажист', uz: 'Vizajist', en: 'Makeup artist' }, img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=400&h=500&q=80' },
-    { id: 'elena', name: 'Елена Росси', role: { ru: 'Эстетист, уход за лицом', uz: 'Estetist, yuz parvarishi', en: 'Esthetician, facial care' }, img: 'https://images.unsplash.com/photo-1544005313-94ddf0286ad2?auto=format&fit=crop&w=400&h=500&q=80' },
-    { id: 'olga', name: 'Ольга Ким', role: { ru: 'Топ-мастер маникюра', uz: 'Top manikyur ustasi', en: 'Lead nail artist' }, img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=500&q=80' },
+    { id: 'nastya', name: 'Анастасия Волкова', role: { ru: 'Колорист, AirTouch', uz: 'Kolorist, AirTouch', en: 'Master colorist, AirTouch' }, img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&q=80&auto=format' },
+    { id: 'marina', name: 'Марина Соколова', role: { ru: 'Визажист', uz: 'Vizajist', en: 'Makeup artist' }, img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop&q=80&auto=format' },
+    { id: 'elena', name: 'Елена Росси', role: { ru: 'Эстетист, уход за лицом', uz: 'Estetist, yuz parvarishi', en: 'Esthetician, facial care' }, img: 'https://images.unsplash.com/photo-1544005313-94ddf0286ad2?w=400&h=500&fit=crop&q=80&auto=format' },
+    { id: 'olga', name: 'Ольга Ким', role: { ru: 'Топ-мастер маникюра', uz: 'Top manikyur ustasi', en: 'Lead nail artist' }, img: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop&q=80&auto=format' },
   ];
 
   /**
@@ -620,7 +649,7 @@
     wrap.innerHTML = MASTERS.map(function (m) {
       return (
         '<button type="button" class="master-card w-full flex gap-4 items-center rounded-2xl border-2 border-rose-200 bg-white/95 p-3 hover:border-primary hover:bg-rose-50/80 transition-all text-left" data-id="' + m.id + '">' +
-        '<img src="' + m.img + '" alt="" class="w-16 h-16 rounded-xl object-cover shrink-0 border border-rose-200"/>' +
+        '<img src="' + m.img + '" alt="" width="64" height="64" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="w-16 h-16 rounded-xl object-cover shrink-0 border-2 border-rose-200 bg-rose-100"/>' +
         '<div><div class="font-notoSerif text-rose-950 font-semibold">' + m.name + '</div><div class="text-xs text-primary font-bold uppercase tracking-wide mt-0.5">' + txt(m.role) + '</div></div></button>'
       );
     }).join('');
@@ -881,8 +910,8 @@
       tab.classList.toggle('text-primary', on);
       tab.classList.toggle('bg-rose-100', on);
       tab.classList.toggle('text-rose-700', !on);
-      var icon = tab.querySelector('.material-symbols-outlined');
-      if (icon) icon.style.fontVariationSettings = on ? "'FILL' 1" : "'FILL' 0";
+      var icon = tab.querySelector('.nav-icon-svg');
+      if (icon) icon.style.opacity = on ? '1' : '0.88';
     });
   }
   setActiveNav('home');
@@ -903,8 +932,8 @@
     $('#stylists-row').innerHTML = MASTERS.map(function (m) {
       return (
         '<div class="flex-shrink-0 w-72">' +
-        '<div class="h-96 rounded-2xl overflow-hidden mb-4 border border-rose-100 shadow-md">' +
-        '<img alt="" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" src="' + m.img + '"/></div>' +
+        '<div class="relative h-96 min-h-[24rem] rounded-2xl overflow-hidden mb-4 border-2 border-rose-200 shadow-md bg-rose-100">' +
+        '<img alt="" width="400" height="500" loading="lazy" decoding="async" referrerpolicy="no-referrer" class="absolute inset-0 w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500" src="' + m.img + '"/></div>' +
         '<h4 class="font-notoSerif text-lg text-rose-950">' + m.name + '</h4>' +
         '<p class="text-on-surface text-xs uppercase tracking-widest text-primary font-bold">' + txt(m.role) + '</p>' +
         '<button type="button" class="pick-master mt-3 text-sm font-bold text-primary hover:underline" data-master-id="' + m.id + '">' + t('pick_master') + '</button></div>'
